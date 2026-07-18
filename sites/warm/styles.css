@@ -12,11 +12,10 @@ body {
   position: absolute;
   left: -9999px;
   top: 0;
-  background: #6C5CE7;
+  background: #2C4C6B;
   color: #fff;
   padding: 0.75rem 1.25rem;
   z-index: 100;
-  border-radius: 0 0 0.5rem 0;
 }
 .skip-link:focus {
   left: 0;
@@ -24,32 +23,8 @@ body {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 3px solid #6C5CE7;
+  outline: 2px solid #2C4C6B;
   outline-offset: 2px;
-}
-
-/* Soft watercolor blobs behind the hero, echoing Vori Health's textured backgrounds */
-.watercolor {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.55;
-  z-index: 0;
-  pointer-events: none;
-}
-.watercolor-1 {
-  width: 480px;
-  height: 480px;
-  top: -160px;
-  right: -120px;
-  background: radial-gradient(circle, #6C5CE7 0%, transparent 70%);
-}
-.watercolor-2 {
-  width: 420px;
-  height: 420px;
-  bottom: -180px;
-  left: -140px;
-  background: radial-gradient(circle, #1E7A5A 0%, transparent 70%);
 }
 
 /* FAQ accordion */

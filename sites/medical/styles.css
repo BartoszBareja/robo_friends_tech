@@ -141,7 +141,6 @@ button:focus-visible {
   border: 1px solid rgba(10, 30, 60, 0.08);
   border-radius: 1rem;
   padding: 1.25rem;
-  height: 100%;
 }
 
 .team-photo {
