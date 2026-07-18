@@ -1,0 +1,203 @@
+/* RoboFriend — wariant "medical" */
+
+:root {
+  --navy: #0A1E3C;
+  --navy-deep: #10233F;
+  --teal: #1BA9A0;
+  --cream: #FFFFFF;
+  --light-teal: #EAF6F5;
+  --ink: #1A1A1A;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+h1, h2, h3, .navbar-brand, .fw-800 {
+  font-family: 'Manrope', sans-serif;
+}
+
+.fw-700 { font-weight: 700; }
+.fw-800 { font-weight: 800; }
+.fw-600 { font-weight: 600; }
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--teal);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  z-index: 1100;
+  border-radius: 0 0 0.5rem 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.text-teal { color: var(--teal) !important; }
+.text-navy { color: var(--navy) !important; }
+.bg-navy { background-color: var(--navy) !important; }
+.bg-light-teal { background-color: var(--light-teal) !important; }
+
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--teal);
+}
+
+.brand-badge {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.6rem;
+  background: var(--navy);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.btn-navy {
+  background-color: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+.btn-navy:hover, .btn-navy:focus {
+  background-color: var(--navy-deep);
+  border-color: var(--navy-deep);
+  color: #fff;
+}
+.btn-outline-navy {
+  border: 2px solid var(--navy);
+  color: var(--navy);
+}
+.btn-outline-navy:hover {
+  background-color: var(--navy);
+  color: #fff;
+}
+
+.btn, .nav-link, a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.navbar-nav .nav-link {
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+.hero-section {
+  background: radial-gradient(circle at 100% 0%, var(--light-teal) 0%, #ffffff 55%);
+}
+
+.status-banner {
+  background-color: var(--light-teal);
+  border-top: 1px solid rgba(27, 169, 160, 0.25);
+  border-bottom: 1px solid rgba(27, 169, 160, 0.25);
+  color: var(--navy);
+}
+
+.stat-card {
+  background: var(--light-teal);
+  border: 1px solid rgba(27, 169, 160, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+.stat-number {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 2.25rem;
+  color: var(--navy);
+  margin-bottom: 0.35rem;
+}
+.stat-label {
+  color: #445;
+  font-size: 0.95rem;
+}
+.stat-source {
+  color: #7a8699;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.mini-card {
+  background: #fff;
+  border: 1px solid rgba(10, 30, 60, 0.08);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  height: 100%;
+}
+
+.team-photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+}
+
+.testimonial-card {
+  max-width: 720px;
+  text-align: center;
+  background: #fff;
+  border-radius: 1.25rem;
+  padding: 2.5rem;
+  border: 1px solid rgba(10, 30, 60, 0.08);
+}
+
+.carousel-icon-dark {
+  filter: invert(1) grayscale(100);
+}
+
+.contact-card {
+  background: #fff;
+  border: 1px solid rgba(10, 30, 60, 0.08);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  max-width: 420px;
+}
+
+.footer-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+.footer-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+.footer-link:hover {
+  color: #fff;
+}
+
+.progress {
+  height: 0.65rem;
+  border-radius: 0.4rem;
+  background-color: rgba(10, 30, 60, 0.08);
+}
+
+.accordion-button:not(.collapsed) {
+  color: var(--navy);
+  background-color: var(--light-teal);
+}
+.accordion-button:focus {
+  box-shadow: 0 0 0 3px rgba(27, 169, 160, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .carousel-item { transition: none; }
+}

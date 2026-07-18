@@ -1,0 +1,79 @@
+/* RoboFriend — wariant "warm" */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 16px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #6C5CE7;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  z-index: 100;
+  border-radius: 0 0 0.5rem 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #6C5CE7;
+  outline-offset: 2px;
+}
+
+/* Soft watercolor blobs behind the hero, echoing Vori Health's textured backgrounds */
+.watercolor {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.55;
+  z-index: 0;
+  pointer-events: none;
+}
+.watercolor-1 {
+  width: 480px;
+  height: 480px;
+  top: -160px;
+  right: -120px;
+  background: radial-gradient(circle, #6C5CE7 0%, transparent 70%);
+}
+.watercolor-2 {
+  width: 420px;
+  height: 420px;
+  bottom: -180px;
+  left: -140px;
+  background: radial-gradient(circle, #1E7A5A 0%, transparent 70%);
+}
+
+/* FAQ accordion */
+.faq-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-item.open .faq-panel {
+  max-height: 400px;
+}
+.faq-icon {
+  transition: transform 0.25s ease;
+}
+.faq-item.open .faq-icon {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .faq-panel,
+  .faq-icon {
+    transition: none;
+  }
+}
