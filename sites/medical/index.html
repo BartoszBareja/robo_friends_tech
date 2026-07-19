@@ -44,11 +44,11 @@
 
 <main id="main">
 
-  <!-- HERO -->
-  <header class="hero-section py-5 py-lg-6">
-    <div class="container py-5">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-6">
+  <!-- HERO — literal half-screen split: video fills one side edge-to-edge -->
+  <header class="hero-section">
+    <div class="row g-0 align-items-stretch">
+      <div class="col-lg-6 d-flex align-items-center py-5">
+        <div class="px-4 px-lg-5 py-5 py-lg-0 mx-auto" style="max-width: 560px;">
           <p class="kicker mb-3">Technologia w służbie najbliższym</p>
           <h1 class="display-4 fw-800 mb-4">We make your <span class="text-teal">future safe</span></h1>
           <p class="fs-5 text-secondary mb-4">RoboFriend to inteligentny <strong>Anioł Stróż</strong>, który po prostu jest i czuwa w tle, 24 godziny na dobę — nie odbierając bliskim godności i poczucia normalności.</p>
@@ -57,12 +57,11 @@
             <a href="#o-projekcie" class="btn btn-outline-navy btn-lg rounded-pill px-4">Poznaj projekt</a>
           </div>
         </div>
-        <div class="col-lg-6">
-          <figure class="mb-0">
-            <img src="https://placehold.co/1200x900/EAF6F5/0A1E3C?text=RoboFriend" class="img-fluid rounded-4 shadow" alt="Wizualizacja koncepcji: senior w otoczeniu najbliższej rodziny">
-            <figcaption class="text-secondary small text-center mt-2">Senior w otoczeniu najbliższej rodziny — wizualizacja koncepcji (grafika AI)</figcaption>
-          </figure>
-        </div>
+      </div>
+      <div class="col-lg-6">
+        <video class="w-100 h-100" style="object-fit: cover; min-height: 420px;" autoplay muted loop playsinline poster="../media/sample_photo.jpg">
+          <source src="../media/main_video.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </header>
@@ -117,7 +116,7 @@
     <div class="container py-4">
       <div class="row align-items-center g-5">
         <div class="col-lg-6 order-2 order-lg-1">
-          <img src="https://placehold.co/1100x850/FFFFFF/1BA9A0?text=RoboFriend+%E2%80%94+technologia" class="img-fluid rounded-4 shadow-sm" alt="RoboFriend — wizualizacja koncepcji technologii (grafika AI)">
+          <img src="../media/sample_photo.jpg" class="img-fluid rounded-4 shadow-sm" alt="Senior w otoczeniu bliskich, w spokoju własnego domu">
         </div>
         <div class="col-lg-6 order-1 order-lg-2">
           <h2 class="display-6 fw-800 mb-4">Technologia</h2>

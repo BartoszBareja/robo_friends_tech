@@ -46,9 +46,8 @@
 <!-- NAV -->
 <header class="sticky top-0 z-50 bg-void/85 backdrop-blur border-b border-white/15">
   <nav class="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 py-4" aria-label="Nawigacja główna">
-    <a href="#main" class="flex items-center gap-2 font-display text-xl font-semibold">
-      <span class="w-9 h-9 bg-teal/15 border border-teal/40 flex items-center justify-center text-teal text-sm font-mono">RF</span>
-      RoboFriend
+    <a href="#main" class="font-display text-xl font-semibold">
+      <span class="text-mist">Robo</span><span class="text-teal">Friend</span>
     </a>
     <button id="nav-toggle" class="lg:hidden p-2 border border-white/15" aria-expanded="false" aria-controls="nav-menu-mobile" aria-label="Otwórz menu nawigacji">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="#E9ECF2" stroke-width="2" stroke-linecap="round"/></svg>
@@ -81,9 +80,15 @@
 
 <main id="main">
 
-  <!-- HERO — text left, live system-status/stats panel right (replaces photo + stats section) -->
-  <section class="relative overflow-hidden grid-glow">
-    <div class="max-w-7xl mx-auto px-5 md:px-8 pt-20 pb-24 md:pt-28 md:pb-32 grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center relative">
+  <!-- HERO — full-bleed video takeover with a dark overlay -->
+  <section class="relative overflow-hidden min-h-[92vh] flex items-end">
+    <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline poster="../media/sample_photo.jpg">
+      <source src="../media/main_video.mp4" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-t from-void via-void/70 to-void/20"></div>
+    <div class="absolute inset-0 grid-glow opacity-60"></div>
+
+    <div class="relative max-w-7xl mx-auto px-5 md:px-8 pb-16 md:pb-24 pt-32 grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-end w-full">
       <div>
         <h1 class="font-display text-4xl sm:text-5xl md:text-6xl leading-[1.05] font-semibold">
           We make your future <span class="text-teal">safe</span>.
@@ -93,19 +98,19 @@
         </p>
         <div class="mt-10 flex flex-wrap gap-4">
           <a href="#zarezerwuj" class="px-7 py-4 rounded-full bg-teal text-void font-semibold hover:brightness-110 transition min-h-[44px] inline-flex items-center">Zarezerwuj RoboFriend</a>
-          <a href="#technologia" class="px-7 py-4 rounded-full border border-white/20 font-semibold hover:border-teal hover:text-teal transition min-h-[44px] inline-flex items-center">Zobacz technologię →</a>
+          <a href="#technologia" class="px-7 py-4 rounded-full border border-white/30 font-semibold hover:border-teal hover:text-teal transition min-h-[44px] inline-flex items-center">Zobacz technologię →</a>
         </div>
       </div>
-      <figure class="grid grid-cols-2">
-        <div class="p-6 border-r border-b border-white/20">
+      <figure class="grid grid-cols-2 bg-void/70 backdrop-blur border border-white/15 rounded-3xl overflow-hidden">
+        <div class="p-6 border-r border-b border-white/15">
           <p class="font-display text-4xl font-semibold text-teal counter" data-target="11.8" data-suffix=" mln">0</p>
           <p class="mt-2 text-sm text-mist/70 leading-snug">Seniorzy 65+ w Polsce do 2060 r.</p>
         </div>
-        <div class="p-6 border-b border-white/20">
+        <div class="p-6 border-b border-white/15">
           <p class="font-display text-4xl font-semibold text-blue counter" data-target="22.0" data-suffix="%">0</p>
           <p class="mt-2 text-sm text-mist/70 leading-snug">Udział osób 65+ w populacji UE dziś</p>
         </div>
-        <div class="p-6 border-r border-white/20">
+        <div class="p-6 border-r border-white/15">
           <p class="font-display text-4xl font-semibold text-teal counter" data-target="5.6" data-suffix=" p.p.">0</p>
           <p class="mt-2 text-sm text-mist/70 leading-snug">Wzrost udziału seniorów w Polsce, 2015–2025</p>
         </div>
@@ -171,8 +176,8 @@
           </div>
         </div>
         <figure>
-          <img src="https://placehold.co/900x900/1B2333/00C2B2?text=RoboFriend" alt="RoboFriend — wizualizacja koncepcji technologii (grafika AI)" class="w-full rounded-3xl border border-white/15">
-          <figcaption class="mt-3 font-mono text-xs text-mist/40">// wizualizacja koncepcji — grafika AI</figcaption>
+          <img src="../media/sample_photo.jpg" alt="Senior w otoczeniu bliskich, w spokoju własnego domu" class="w-full rounded-3xl border border-white/15">
+          <figcaption class="mt-3 font-mono text-xs text-mist/40">// zdjęcie ilustracyjne</figcaption>
         </figure>
       </div>
     </div>
@@ -192,8 +197,8 @@
       </div>
       <div class="lg:col-span-5 lg:sticky lg:top-28 self-start">
         <figure class="mb-12">
-          <img src="https://placehold.co/900x700/1B2333/00C2B2?text=RoboFriend+Team" alt="Zespół RoboFriend — wizualizacja koncepcji (grafika AI)" class="w-full rounded-3xl border border-white/15">
-          <figcaption class="mt-3 font-mono text-xs text-mist/40">// wizualizacja koncepcji — grafika AI</figcaption>
+          <img src="../media/sample_photo.jpg" alt="Senior w otoczeniu bliskich, w spokoju własnego domu" class="w-full rounded-3xl border border-white/15">
+          <figcaption class="mt-3 font-mono text-xs text-mist/40">// zdjęcie ilustracyjne</figcaption>
         </figure>
         <div class="flex items-center gap-6">
           <p class="font-display text-2xl md:text-3xl font-bold text-teal tracking-wide uppercase [writing-mode:vertical-rl] rotate-180 shrink-0">Nasze podejście</p>
@@ -394,9 +399,8 @@
 <footer class="bg-void border-t border-white/15 text-mist/60">
   <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 grid sm:grid-cols-3 gap-10">
     <div>
-      <p class="flex items-center gap-2 font-display text-lg font-semibold text-mist mb-3">
-        <span class="w-8 h-8 bg-teal/15 border border-teal/40 flex items-center justify-center text-teal text-xs font-mono">RF</span>
-        RoboFriend
+      <p class="font-display text-lg font-semibold mb-3">
+        <span class="text-mist">Robo</span><span class="text-teal">Friend</span>
       </p>
       <p class="text-sm leading-relaxed">Autonomiczny Anioł Stróż, który czuwa nad Twoimi bliskimi 24 godziny na dobę.</p>
     </div>

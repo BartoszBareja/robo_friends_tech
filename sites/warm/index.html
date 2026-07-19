@@ -78,38 +78,49 @@
 
 <main id="main">
 
-  <!-- HERO — single column, wide open, no image: negative space is the point -->
-  <section class="relative overflow-hidden">
-    <div class="max-w-4xl mx-auto px-5 md:px-8 pt-24 pb-20 md:pt-40 md:pb-28">
+  <!-- HERO — full-bleed video takeover, matching the cutting-edge treatment -->
+  <section class="relative overflow-hidden min-h-[92vh] flex items-end">
+    <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline poster="../media/sample_photo.jpg">
+      <source src="../media/main_video.mp4" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/10"></div>
+
+    <div class="relative max-w-4xl mx-auto px-5 md:px-8 pb-16 md:pb-24 pt-32 w-full">
       <p class="uppercase tracking-[0.2em] text-xs font-bold text-leaf mb-6">Technologia w służbie najbliższym</p>
-      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl leading-[1.05] font-bold text-ink">
+      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl leading-[1.05] font-bold text-white">
         We make your <span class="text-blue">future safe</span>
       </h1>
-      <p class="mt-8 text-lg md:text-xl text-ink/70 max-w-xl leading-relaxed">
-        RoboFriend to inteligentny <strong class="text-ink">Anioł Stróż</strong>, który po prostu jest i czuwa w tle, 24 godziny na dobę — nie odbierając Twoim bliskim godności i poczucia normalności.
+      <p class="mt-8 text-lg md:text-xl text-white/80 max-w-xl leading-relaxed">
+        RoboFriend to inteligentny <strong class="text-white">Anioł Stróż</strong>, który po prostu jest i czuwa w tle, 24 godziny na dobę — nie odbierając Twoim bliskim godności i poczucia normalności.
       </p>
       <div class="mt-10 flex flex-wrap gap-4">
         <a href="#zarezerwuj" class="px-7 py-4 bg-blue text-white font-semibold hover:bg-leaf transition-colors min-h-[44px] inline-flex items-center">Zarezerwuj Swojego RoboFriend</a>
-        <a href="#o-projekcie" class="px-7 py-4 border border-ink/20 font-semibold hover:border-blue hover:text-blue transition-colors min-h-[44px] inline-flex items-center">Poznaj projekt</a>
+        <a href="#o-projekcie" class="px-7 py-4 border border-white/40 text-white font-semibold hover:border-blue hover:text-blue transition-colors min-h-[44px] inline-flex items-center">Poznaj projekt</a>
       </div>
-      <div class="mt-20 pt-8 border-t border-line flex flex-wrap gap-x-16 gap-y-6">
+      <div class="mt-20 pt-8 border-t border-white/20 flex flex-wrap gap-x-16 gap-y-6">
         <div>
           <p class="text-3xl font-display font-bold text-blue">11,8 mln</p>
-          <p class="mt-1 text-sm text-ink/55 max-w-[16rem]">seniorów (65+) w Polsce do 2060 r. — niemal 40% populacji</p>
+          <p class="mt-1 text-sm text-white/60 max-w-[16rem]">seniorów (65+) w Polsce do 2060 r. — niemal 40% populacji</p>
         </div>
         <div>
           <p class="text-3xl font-display font-bold text-leaf">22,0%</p>
-          <p class="mt-1 text-sm text-ink/55 max-w-[16rem]">populacji UE to dziś osoby 65+, do 2100 r. — 32,5%</p>
+          <p class="mt-1 text-sm text-white/60 max-w-[16rem]">populacji UE to dziś osoby 65+, do 2100 r. — 32,5%</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- STATUS BANNER -->
-  <div class="bg-beige border-y border-ink/10">
-    <p class="max-w-5xl mx-auto px-5 md:px-8 py-4 text-sm md:text-[15px] text-ink/80 leading-relaxed text-center">
-      <strong class="text-ink">STATUS PROJEKTU:</strong> Pragniemy poinformować, że RoboFriend jest obecnie w fazie budowy prototypu. Prezentowane grafiki przedstawiają tylko obraz koncepcji i mechanizm działania. Będziemy aktualizować stronę wraz ze zmianami w projekcie. Grafiki mogą być wygenerowane z użyciem AI.
-    </p>
+  <!-- STATUS BANNER — compact header, full text fades/slides in to the right on hover/focus -->
+  <div class="group bg-beige border-y border-ink/10" tabindex="0">
+    <div class="max-w-5xl mx-auto px-5 md:px-8 py-12">
+      <div class="relative inline-flex items-center">
+        <p class="shrink-0 text-sm md:text-[15px] font-bold text-ink whitespace-nowrap">STATUS PROJEKTU</p>
+        <span class="shrink-0 ml-3 text-sm text-ink/40 whitespace-nowrap group-hover:opacity-0 group-focus-within:opacity-0 transition-opacity">— najedź, aby dowiedzieć się więcej</span>
+        <div class="absolute left-full top-1/2 -translate-y-1/2 ml-3 w-[min(90vw,42rem)] opacity-0 -translate-x-2 pointer-events-none transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0 group-focus-within:opacity-100 group-focus-within:translate-x-0">
+          <p class="pl-3 border-l border-ink/15 text-sm md:text-[15px] text-ink/70 leading-relaxed">Pragniemy poinformować, że RoboFriend jest obecnie w fazie budowy prototypu. Prezentowane grafiki przedstawiają tylko obraz koncepcji i mechanizm działania. Będziemy aktualizować stronę wraz ze zmianami w projekcie. Grafiki mogą być wygenerowane z użyciem AI.</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- O PROJEKCIE + INWESTYCJA — problem / solution side by side -->
@@ -138,8 +149,8 @@
       </div>
     </div>
     <figure class="mt-16">
-      <img src="https://placehold.co/1600x600/F1E9D9/2C4C6B?text=RoboFriend" alt="Wizualizacja koncepcji: senior w otoczeniu najbliższej rodziny" class="w-full border border-ink/10">
-      <figcaption class="mt-3 text-sm text-ink/50">Senior w otoczeniu najbliższej rodziny — wizualizacja koncepcji (grafika AI)</figcaption>
+      <img src="../media/sample_photo.jpg" alt="Senior w otoczeniu bliskich, w spokoju własnego domu" class="w-full border border-ink/10">
+      <figcaption class="mt-3 text-sm text-ink/50">Senior w otoczeniu bliskich, w spokoju własnego domu — zdjęcie ilustracyjne</figcaption>
     </figure>
   </section>
 
