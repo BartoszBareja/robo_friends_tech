@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt — RoboFriend</title>
+<meta name="description" content="Zapraszamy do kontaktu z zespołem RoboFriend.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          void: '#000000', abyss: '#000000', slate: '#0D0D0D', panel: '#161616',
+          teal: { DEFAULT: '#D9C7A0', 50: '#2A2116' }, blue: '#F2994A', mist: '#EDF0F5'
+        },
+        fontFamily: { display: ['Space Grotesk', 'sans-serif'], body: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-body bg-void text-mist antialiased">
+
+<a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+<header class="sticky top-0 z-50 bg-void/85 backdrop-blur border-b border-white/15">
+  <nav class="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 py-4" aria-label="Nawigacja główna">
+    <a href="index.html" class="font-display text-xl font-semibold">
+      <span class="text-mist">Robo</span><span class="text-teal">Friend</span>
+    </a>
+    <button id="nav-toggle" class="lg:hidden p-2 border border-white/15" aria-expanded="false" aria-controls="nav-menu-mobile" aria-label="Otwórz menu nawigacji">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="#E9ECF2" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="hidden lg:flex items-center gap-6 text-[15px] font-medium">
+      <a href="o-projekcie.html" class="hover:text-teal transition-colors">O Projekcie</a>
+      <a href="technologia.html" class="hover:text-teal transition-colors">Technologia</a>
+      <a href="inwestycja.html" class="hover:text-teal transition-colors">Inwestycja w spokój</a>
+      <a href="partnerzy.html" class="hover:text-teal transition-colors">Partnerzy</a>
+      <a href="zespol.html" class="hover:text-teal transition-colors">Zespół</a>
+      <a href="faq.html" class="hover:text-teal transition-colors">FAQ</a>
+      <a href="kontakt.html" class="text-teal">Kontakt</a>
+      <a href="ankieta.html" class="px-4 py-2.5 rounded-full border border-teal/50 text-teal hover:bg-teal/10 transition-colors min-h-[44px] inline-flex items-center">Ankieta</a>
+      <a href="zarezerwuj.html" class="px-5 py-2.5 rounded-full bg-teal text-void font-semibold hover:brightness-110 transition min-h-[44px] inline-flex items-center">Zarezerwuj</a>
+    </div>
+  </nav>
+  <div id="nav-menu-mobile" class="hidden lg:hidden flex-col gap-1 px-5 pb-5 text-[15px] font-medium">
+    <a href="o-projekcie.html" class="block py-2.5">O Projekcie</a>
+    <a href="technologia.html" class="block py-2.5">Technologia</a>
+    <a href="inwestycja.html" class="block py-2.5">Inwestycja w spokój</a>
+    <a href="partnerzy.html" class="block py-2.5">Partnerzy</a>
+    <a href="zespol.html" class="block py-2.5">Zespół</a>
+    <a href="faq.html" class="block py-2.5">FAQ</a>
+    <a href="kontakt.html" class="block py-2.5">Kontakt</a>
+    <a href="ankieta.html" class="block py-3 mt-2 rounded-full border border-teal/50 text-teal text-center">Ankieta</a>
+    <a href="zarezerwuj.html" class="block py-3 mt-2 rounded-full bg-teal text-void text-center font-semibold">Zarezerwuj RoboFriend</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="page-header">
+    <div class="max-w-4xl mx-auto px-5 md:px-8">
+      <p class="page-index mb-3">09 / 09</p>
+      <h1 class="font-display text-3xl md:text-5xl font-semibold mb-4">Kontakt</h1>
+      <p class="text-lg text-mist/70 max-w-2xl">Zapraszamy do kontaktu.</p>
+    </div>
+  </div>
+
+  <section class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-20">
+    <div class="grid md:grid-cols-5 gap-10 items-center">
+      <div class="md:col-span-3">
+        <p class="font-display text-xl font-semibold">Krystian Skrzypalik</p>
+        <p class="font-mono text-sm text-mist/55 mb-6">CEO &amp; Founder</p>
+        <p class="mb-2"><span class="font-semibold text-teal">Mobile:</span> <a href="tel:+48665945049" class="hover:text-teal">+48 665 945 049</a></p>
+        <p><span class="font-semibold text-teal">E-mail:</span> <a href="mailto:krystian.skrzypalik@robofriendstech.pl" class="hover:text-teal break-all">krystian.skrzypalik@robofriendstech.pl</a></p>
+      </div>
+      <figure class="md:col-span-2">
+        <img src="../media/pexels-ivan-s-7910784.jpg" alt="Para seniorów wymieniająca się bukietem kwiatów" class="w-full rounded-2xl border border-white/15">
+        <figcaption class="mt-3 font-mono text-xs text-mist/40">// zawsze miło nam porozmawiać</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <nav class="max-w-4xl mx-auto px-5 md:px-8 pb-20" aria-label="Nawigacja między podstronami">
+    <div class="page-nav">
+      <a href="zarezerwuj.html"><span class="dir">← wstecz</span>Zarezerwuj</a>
+      <a href="index.html" class="text-right"><span class="dir">dalej →</span>Strona główna</a>
+    </div>
+  </nav>
+
+</main>
+
+<footer class="bg-void border-t border-white/15 text-mist/50">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+    <p>© 2025 Robo Friends Tech P.S.A. Wszelkie prawa zastrzeżone.</p>
+    <div class="flex gap-6">
+      <a href="#" class="hover:text-mist">Polityka Prywatności</a>
+      <a href="#" class="hover:text-mist">Regulamin</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

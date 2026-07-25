@@ -27,6 +27,40 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
+/* Tab bar — buttons that switch the visible content panel below (no page reload) */
+.tab-bar-scroll {
+  scrollbar-width: none;
+}
+.tab-bar-scroll::-webkit-scrollbar {
+  display: none;
+}
+.tab-btn {
+  white-space: nowrap;
+  padding: 1rem 1.1rem;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: rgba(43, 36, 24, 0.55);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.tab-btn:hover {
+  color: #2B2418;
+}
+.tab-btn.active {
+  color: #2C4C6B;
+  border-bottom-color: #2C4C6B;
+}
+
+/* Content panels — only the active one is shown */
+.tab-panel[hidden] {
+  display: none;
+}
+.tab-panel {
+  scroll-margin-top: 5rem;
+}
+
 /* FAQ accordion */
 .faq-panel {
   max-height: 0;

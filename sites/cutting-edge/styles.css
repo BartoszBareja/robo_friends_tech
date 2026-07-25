@@ -12,8 +12,8 @@ body {
   position: absolute;
   left: -9999px;
   top: 0;
-  background: #00C2B2;
-  color: #0B0F1A;
+  background: #D9C7A0;
+  color: #000000;
   padding: 0.75rem 1.25rem;
   z-index: 100;
   border-radius: 0 0 0.5rem 0;
@@ -24,7 +24,7 @@ body {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 3px solid #00C2B2;
+  outline: 3px solid #D9C7A0;
   outline-offset: 2px;
 }
 
@@ -34,6 +34,108 @@ button:focus-visible {
     linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 48px 48px;
+}
+
+/* Hub tile grid — homepage links out to every subpage */
+.tile {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 2rem;
+  background: #000000;
+  text-decoration: none;
+  color: inherit;
+  min-height: 220px;
+  transition: background-color 0.2s ease;
+}
+.tile:hover,
+.tile:focus-visible {
+  background-color: #161616;
+}
+.tile-index {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: #D9C7A0;
+  margin-bottom: 1rem;
+}
+.tile-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #EDF0F5;
+}
+.tile-desc {
+  flex: 1;
+  color: rgba(237, 240, 245, 0.6);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.tile-arrow {
+  margin-top: 1.5rem;
+  font-weight: 600;
+  color: #D9C7A0;
+  transition: transform 0.2s ease;
+}
+.tile:hover .tile-arrow,
+.tile:focus-visible .tile-arrow {
+  transform: translateX(4px);
+}
+.tile-accent {
+  background: #D9C7A0;
+}
+.tile-accent:hover,
+.tile-accent:focus-visible {
+  background-color: #E8DAB8;
+}
+.tile-accent .tile-index,
+.tile-accent .tile-arrow {
+  color: #000000;
+}
+.tile-accent .tile-title {
+  color: #000000;
+}
+.tile-accent .tile-desc {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* Subpage header */
+.page-header {
+  padding: 9rem 0 4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: #000000;
+}
+.page-index {
+  font-family: 'JetBrains Mono', monospace;
+  color: #D9C7A0;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+/* Prev/next pagination between subpages */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 2rem;
+}
+.page-nav a {
+  text-decoration: none;
+  color: #EDF0F5;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+.page-nav a:hover {
+  color: #D9C7A0;
+}
+.page-nav .dir {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: rgba(237, 240, 245, 0.4);
+  margin-bottom: 0.25rem;
 }
 
 /* FAQ accordion */
