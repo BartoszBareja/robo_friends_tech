@@ -34,27 +34,6 @@
 
 <a href="#main" class="skip-link">Przejdź do treści głównej</a>
 
-<!-- NAV -->
-<header class="absolute top-0 inset-x-0 z-50">
-  <nav class="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 py-5" aria-label="Nawigacja główna">
-    <a href="#main" class="flex items-center gap-2.5 font-display text-xl font-bold tracking-tight text-white">
-      <span class="w-9 h-9 bg-white/15 border border-white/40 backdrop-blur flex items-center justify-center text-white text-sm font-bold">RF</span>
-      RoboFriend
-    </a>
-    <button id="nav-toggle" class="lg:hidden p-2 border border-white/40 text-white" aria-expanded="false" aria-controls="nav-menu-mobile" aria-label="Otwórz menu nawigacji">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </button>
-    <div class="hidden lg:flex items-center gap-2 text-[15px] font-medium text-white/90">
-      <a href="#ankieta" class="px-4 py-2.5 border border-white/50 hover:bg-white/10 transition-colors min-h-[44px] inline-flex items-center">Ankieta</a>
-      <a href="#zarezerwuj" class="px-5 py-2.5 bg-white text-blue hover:bg-leaf hover:text-white transition-colors min-h-[44px] inline-flex items-center">Zarezerwuj</a>
-    </div>
-  </nav>
-  <div id="nav-menu-mobile" class="hidden lg:hidden flex-col gap-1 px-5 pb-5 text-[15px] font-medium bg-ink/90 backdrop-blur">
-    <a href="#ankieta" class="block py-3 mt-2 border border-white/50 text-white text-center">Ankieta</a>
-    <a href="#zarezerwuj" class="block py-3 mt-2 bg-white text-blue text-center">Zarezerwuj RoboFriend</a>
-  </div>
-</header>
-
 <main id="main">
 
   <!-- HERO — full-bleed video, minimal copy -->
@@ -86,19 +65,49 @@
     </p>
   </div>
 
-  <!-- TAB BAR — przyciski nawigacyjne przełączające treść poniżej -->
+  <!-- TAB BAR — przyciski ze zdjęciem przełączające treść poniżej -->
   <nav class="sticky top-0 z-40 bg-cream border-b border-line" aria-label="Nawigacja po sekcjach">
-    <div class="max-w-7xl mx-auto px-5 md:px-8 flex gap-1 overflow-x-auto tab-bar-scroll" role="tablist">
-      <a href="#glowna" class="tab-btn active" role="tab" aria-selected="true">Strona główna</a>
-      <a href="#o-projekcie" class="tab-btn" role="tab" aria-selected="false">O Projekcie</a>
-      <a href="#technologia" class="tab-btn" role="tab" aria-selected="false">Technologia</a>
-      <a href="#inwestycja" class="tab-btn" role="tab" aria-selected="false">Inwestycja w spokój</a>
-      <a href="#partnerzy" class="tab-btn" role="tab" aria-selected="false">Partnerzy</a>
-      <a href="#zespol" class="tab-btn" role="tab" aria-selected="false">Zespół</a>
-      <a href="#faq" class="tab-btn" role="tab" aria-selected="false">FAQ</a>
-      <a href="#ankieta" class="tab-btn" role="tab" aria-selected="false">Ankieta</a>
-      <a href="#zarezerwuj" class="tab-btn" role="tab" aria-selected="false">Zarezerwuj</a>
-      <a href="#kontakt" class="tab-btn" role="tab" aria-selected="false">Kontakt</a>
+    <div class="max-w-7xl mx-auto px-5 md:px-8 flex gap-2 overflow-x-auto tab-bar-scroll py-2" role="tablist">
+      <a href="#glowna" class="tab-btn active" role="tab" aria-selected="true">
+        <img src="../media/pexels-cottonbro-5934642.jpg" alt="" class="tab-btn-img">
+        <span>Strona główna</span>
+      </a>
+      <a href="#o-projekcie" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/sample_photo.jpg" alt="" class="tab-btn-img">
+        <span>O Projekcie</span>
+      </a>
+      <a href="#technologia" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/sample_photo3.jpg" alt="" class="tab-btn-img">
+        <span>Technologia</span>
+      </a>
+      <a href="#inwestycja" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/sample_photo4.jpg" alt="" class="tab-btn-img">
+        <span>Inwestycja w spokój</span>
+      </a>
+      <a href="#partnerzy" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/pexels-ivan-s-7911306.jpg" alt="" class="tab-btn-img">
+        <span>Partnerzy</span>
+      </a>
+      <a href="#zespol" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/pexels-alex-green-6626060.jpg" alt="" class="tab-btn-img">
+        <span>Zespół</span>
+      </a>
+      <a href="#faq" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/pexels-shvets-production-7545241.jpg" alt="" class="tab-btn-img">
+        <span>FAQ</span>
+      </a>
+      <a href="#ankieta" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/pexels-rdne-7713339.jpg" alt="" class="tab-btn-img">
+        <span>Ankieta</span>
+      </a>
+      <a href="#zarezerwuj" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/sample_photo2.jpg" alt="" class="tab-btn-img">
+        <span>Zarezerwuj</span>
+      </a>
+      <a href="#kontakt" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/pexels-ivan-s-7910784.jpg" alt="" class="tab-btn-img">
+        <span>Kontakt</span>
+      </a>
     </div>
   </nav>
 
@@ -112,41 +121,68 @@
       <p class="text-lg text-ink/70 max-w-2xl mb-10">Wybierz sekcję poniżej, aby dowiedzieć się więcej o projekcie, technologii i sposobach zaangażowania się.</p>
 
       <div class="grid sm:grid-cols-2 gap-4">
-        <a href="#o-projekcie" class="block p-5 border border-line hover:border-blue transition-colors">
-          <p class="font-display font-bold mb-1">O Projekcie</p>
-          <p class="text-sm text-ink/60">Wyzwanie, z którym się mierzymy: niezależność bez strachu.</p>
+        <a href="#o-projekcie" class="block rounded-xl border border-line overflow-hidden hover:border-blue transition-colors">
+          <img src="../media/sample_photo.jpg" alt="" class="w-full h-32 object-cover">
+          <div class="p-5">
+            <p class="font-display font-bold mb-1">O Projekcie</p>
+            <p class="text-sm text-ink/60">Wyzwanie, z którym się mierzymy: niezależność bez strachu.</p>
+          </div>
         </a>
-        <a href="#technologia" class="block p-5 border border-line hover:border-blue transition-colors">
-          <p class="font-display font-bold mb-1">Technologia</p>
-          <p class="text-sm text-ink/60">Ekosystem czujników i oprogramowania, niewidoczny dla użytkownika.</p>
+        <a href="#technologia" class="block rounded-xl border border-line overflow-hidden hover:border-blue transition-colors">
+          <img src="../media/sample_photo3.jpg" alt="" class="w-full h-32 object-cover">
+          <div class="p-5">
+            <p class="font-display font-bold mb-1">Technologia</p>
+            <p class="text-sm text-ink/60">Ekosystem czujników i oprogramowania, niewidoczny dla użytkownika.</p>
+          </div>
         </a>
-        <a href="#inwestycja" class="block p-5 border border-line hover:border-blue transition-colors">
-          <p class="font-display font-bold mb-1">Inwestycja w spokój</p>
-          <p class="text-sm text-ink/60">Bezpieczeństwo, które nie musi kosztować tyle, co tradycyjna opieka.</p>
+        <a href="#inwestycja" class="block rounded-xl border border-line overflow-hidden hover:border-blue transition-colors">
+          <img src="../media/sample_photo4.jpg" alt="" class="w-full h-32 object-cover">
+          <div class="p-5">
+            <p class="font-display font-bold mb-1">Inwestycja w spokój</p>
+            <p class="text-sm text-ink/60">Bezpieczeństwo, które nie musi kosztować tyle, co tradycyjna opieka.</p>
+          </div>
         </a>
-        <a href="#partnerzy" class="block p-5 border border-line hover:border-blue transition-colors">
-          <p class="font-display font-bold mb-1">Partnerzy</p>
-          <p class="text-sm text-ink/60">Z Fundacją Gerio budujemy bezpieczną Silver Economy.</p>
+        <a href="#partnerzy" class="block rounded-xl border border-line overflow-hidden hover:border-blue transition-colors">
+          <img src="../media/pexels-ivan-s-7911306.jpg" alt="" class="w-full h-32 object-cover">
+          <div class="p-5">
+            <p class="font-display font-bold mb-1">Partnerzy</p>
+            <p class="text-sm text-ink/60">Z Fundacją Gerio budujemy bezpieczną Silver Economy.</p>
+          </div>
         </a>
-        <a href="#zespol" class="block p-5 border border-line hover:border-blue transition-colors">
-          <p class="font-display font-bold mb-1">Zespół</p>
-          <p class="text-sm text-ink/60">Poznaj ludzi, którzy budują RoboFriend.</p>
+        <a href="#zespol" class="block rounded-xl border border-line overflow-hidden hover:border-blue transition-colors">
+          <img src="../media/pexels-alex-green-6626060.jpg" alt="" class="w-full h-32 object-cover">
+          <div class="p-5">
+            <p class="font-display font-bold mb-1">Zespół</p>
+            <p class="text-sm text-ink/60">Poznaj ludzi, którzy budują RoboFriend.</p>
+          </div>
         </a>
-        <a href="#faq" class="block p-5 border border-line hover:border-blue transition-colors">
-          <p class="font-display font-bold mb-1">FAQ</p>
-          <p class="text-sm text-ink/60">Odpowiedzi na najczęstsze pytania o RoboFriend.</p>
+        <a href="#faq" class="block rounded-xl border border-line overflow-hidden hover:border-blue transition-colors">
+          <img src="../media/pexels-shvets-production-7545241.jpg" alt="" class="w-full h-32 object-cover">
+          <div class="p-5">
+            <p class="font-display font-bold mb-1">FAQ</p>
+            <p class="text-sm text-ink/60">Odpowiedzi na najczęstsze pytania o RoboFriend.</p>
+          </div>
         </a>
-        <a href="#ankieta" class="block p-5 border border-line hover:border-blue transition-colors">
-          <p class="font-display font-bold mb-1">Ankieta</p>
-          <p class="text-sm text-ink/60">Twój głos pomoże nam zbudować lepsze rozwiązanie.</p>
+        <a href="#ankieta" class="block rounded-xl border border-line overflow-hidden hover:border-blue transition-colors">
+          <img src="../media/pexels-rdne-7713339.jpg" alt="" class="w-full h-32 object-cover">
+          <div class="p-5">
+            <p class="font-display font-bold mb-1">Ankieta</p>
+            <p class="text-sm text-ink/60">Twój głos pomoże nam zbudować lepsze rozwiązanie.</p>
+          </div>
         </a>
-        <a href="#zarezerwuj" class="block p-5 border border-line hover:border-blue transition-colors">
-          <p class="font-display font-bold mb-1">Zarezerwuj</p>
-          <p class="text-sm text-ink/60">Chcesz być pierwszy? Zgłoś zainteresowanie RoboFriend.</p>
+        <a href="#zarezerwuj" class="block rounded-xl border border-line overflow-hidden hover:border-blue transition-colors">
+          <img src="../media/sample_photo2.jpg" alt="" class="w-full h-32 object-cover">
+          <div class="p-5">
+            <p class="font-display font-bold mb-1">Zarezerwuj</p>
+            <p class="text-sm text-ink/60">Chcesz być pierwszy? Zgłoś zainteresowanie RoboFriend.</p>
+          </div>
         </a>
-        <a href="#kontakt" class="block p-5 border border-line hover:border-blue transition-colors sm:col-span-2">
-          <p class="font-display font-bold mb-1">Kontakt</p>
-          <p class="text-sm text-ink/60">Porozmawiajmy o RoboFriend.</p>
+        <a href="#kontakt" class="block rounded-xl border border-line overflow-hidden hover:border-blue transition-colors sm:col-span-2">
+          <img src="../media/pexels-ivan-s-7910784.jpg" alt="" class="w-full h-40 object-cover">
+          <div class="p-5">
+            <p class="font-display font-bold mb-1">Kontakt</p>
+            <p class="text-sm text-ink/60">Porozmawiajmy o RoboFriend.</p>
+          </div>
         </a>
       </div>
     </section>
