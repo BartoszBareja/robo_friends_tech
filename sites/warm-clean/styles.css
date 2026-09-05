@@ -1,0 +1,270 @@
+/* RoboFriend — wariant "warm-clean" (na bazie warm, wzorzec: MediFlow AI / MedRx) */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 16px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #2C4C6B;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  z-index: 100;
+  border-radius: 0 0 0.5rem 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #2C4C6B;
+  outline-offset: 2px;
+}
+
+/* Nav */
+.nav-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(43, 36, 24, 0.6);
+  transition: color 0.2s ease;
+}
+.nav-link:hover {
+  color: #2B2418;
+}
+
+/* Buttons */
+.btn-solid {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 0.65rem;
+  background: #2C4C6B;
+  color: #FBF7F0;
+  font-weight: 600;
+  min-height: 44px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.btn-solid:hover {
+  background: #4B7A56;
+  transform: translateY(-1px);
+}
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 0.65rem;
+  border: 1.5px solid rgba(43, 36, 24, 0.18);
+  color: #2B2418;
+  font-weight: 600;
+  min-height: 44px;
+  transition: border-color 0.2s ease;
+}
+.btn-outline:hover {
+  border-color: #2B2418;
+}
+
+/* Trust badges — small pill row under the hero headline */
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+  background: #F1E9D9;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(43, 36, 24, 0.7);
+}
+.trust-badge svg {
+  color: #4B7A56;
+}
+
+/* Hero photo card */
+.hero-clean-photo {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: #E4D9C4;
+}
+.hero-clean-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Feature icon card */
+.icon-card {
+  padding: 1.75rem;
+  border-radius: 1rem;
+  border: 1px solid #E4D9C4;
+  background: #FBF7F0;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.icon-card:hover {
+  box-shadow: 0 16px 30px -18px rgba(43, 36, 24, 0.25);
+  transform: translateY(-2px);
+}
+.icon-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #E9F1EC;
+  color: #4B7A56;
+  margin-bottom: 1rem;
+}
+.icon-card-icon.is-blue {
+  background: #E7EDF2;
+  color: #2C4C6B;
+}
+.icon-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #2C4C6B;
+  transition: gap 0.2s ease;
+}
+.icon-card:hover .icon-card-link {
+  gap: 0.55rem;
+}
+
+/* Checklist row */
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.6rem 0;
+}
+.check-list li svg {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  color: #4B7A56;
+}
+
+/* Split photo + checklist section frame */
+.split-photo {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: #E4D9C4;
+}
+.split-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Profile / specialist card */
+.spec-card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid #E4D9C4;
+  background: #FBF7F0;
+  text-align: center;
+}
+.spec-card img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+}
+
+/* Tier-style feature card (borrowed pricing-card layout, no pricing) */
+.tier-card {
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid #E4D9C4;
+  background: #FBF7F0;
+}
+.tier-card.is-featured {
+  border-color: #2C4C6B;
+  box-shadow: 0 20px 40px -24px rgba(44, 76, 107, 0.35);
+}
+.tier-card-title {
+  font-family: 'Arimo', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Tab bar — plain text pills, segmented-control style */
+.tab-bar-scroll {
+  scrollbar-width: none;
+}
+.tab-bar-scroll::-webkit-scrollbar {
+  display: none;
+}
+.tab-btn {
+  flex-shrink: 0;
+  padding: 0.6rem 1.1rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(43, 36, 24, 0.6);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.tab-btn:hover {
+  background: #F1E9D9;
+  color: #2B2418;
+}
+.tab-btn.active {
+  background: #2C4C6B;
+  color: #FBF7F0;
+}
+
+/* Content panels — only the active one is shown */
+.tab-panel[hidden] {
+  display: none;
+}
+.tab-panel {
+  scroll-margin-top: 6rem;
+}
+
+/* FAQ accordion */
+.faq-item {
+  border-radius: 0.85rem;
+  background: #FBF7F0;
+  border: 1px solid #E4D9C4;
+  overflow: hidden;
+}
+.faq-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-item.open .faq-panel {
+  max-height: 400px;
+}
+.faq-icon {
+  transition: transform 0.25s ease;
+}
+.faq-item.open .faq-icon {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .faq-panel,
+  .faq-icon {
+    transition: none;
+  }
+}

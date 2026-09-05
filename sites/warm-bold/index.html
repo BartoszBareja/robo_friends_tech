@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RoboFriend — Autonomiczny Robot i Wsparcie Seniora</title>
+<meta name="description" content="RoboFriend — inteligentny Anioł Stróż, który czuwa nad Twoimi bliskimi 24 godziny na dobę. We make your future safe.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: '#FBF7F0',
+          beige: '#F1E9D9',
+          ink: '#2B2418',
+          blue: { DEFAULT: '#2C4C6B', light: '#3E6488' },
+          leaf: '#4B7A56',
+          line: '#E4D9C4'
+        },
+        fontFamily: { display: ['Arimo', 'sans-serif'], body: ['Inter', 'sans-serif'] }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-body bg-cream text-ink antialiased">
+
+<a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+<!-- NAV — floating glass pill -->
+<header class="max-w-7xl mx-auto px-5 md:px-8 pt-6">
+  <nav class="glass-bar rounded-full flex items-center justify-between px-5 py-2.5" aria-label="Nawigacja główna">
+    <a href="#main" class="font-display text-lg font-extrabold text-ink">RoboFriend</a>
+    <div class="flex items-center gap-2">
+      <a href="#ankieta" class="hidden sm:inline-flex px-4 py-2.5 rounded-full text-sm font-semibold text-ink hover:bg-beige/60 transition-colors min-h-[44px] items-center">Ankieta</a>
+      <a href="#zarezerwuj" class="pill-btn pill-btn-dark text-sm">Zarezerwuj</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="max-w-7xl mx-auto px-5 md:px-8 mt-6">
+    <div class="hero-bold rounded-[2rem]">
+      <p class="hero-bold-wordmark" aria-hidden="true">ROBOFRIEND</p>
+      <div class="relative z-10 grid md:grid-cols-2 gap-10 items-center px-6 md:px-14 pt-20 pb-10 md:pt-28 md:pb-16">
+        <div>
+          <p class="uppercase tracking-[0.2em] text-xs font-bold text-leaf mb-5">Technologia w służbie najbliższym</p>
+          <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.03] text-white">
+            We make your <span class="text-blue-light">future safe</span>
+          </h1>
+          <p class="mt-6 text-white/70 max-w-md leading-relaxed">
+            RoboFriend to inteligentny Anioł Stróż, który po prostu jest i czuwa w tle, 24 godziny na dobę.
+          </p>
+          <div class="mt-9 flex flex-wrap items-center gap-5">
+            <a href="#zarezerwuj" class="pill-btn pill-btn-light">Zarezerwuj Swojego RoboFriend <span aria-hidden="true">↗</span></a>
+            <div class="glass-chip">
+              <div class="avatar-stack" aria-hidden="true">
+                <img src="../media/sample_photo.jpg" alt="">
+                <img src="../media/pexels-alex-green-6626060.jpg" alt="">
+                <img src="../media/pexels-ivan-s-7911306.jpg" alt="">
+                <span class="avatar-stack-more">+</span>
+              </div>
+              <p class="text-xs text-white/70 max-w-[9rem] leading-snug">Rodziny, które już czekają na RoboFriend</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="hero-bold-photo aspect-[4/3] md:aspect-[4/4]">
+            <img src="../media/sample_photo.jpg" alt="Seniorka we własnym domu, w towarzystwie psa">
+          </div>
+          <div class="stat-pill absolute -left-4 top-6 md:-left-8">
+            <p class="stat-pill-num">11,8 mln</p>
+            <p class="stat-pill-label">seniorów w Polsce<br>do 2060 r.</p>
+          </div>
+          <div class="stat-pill absolute -right-2 -bottom-6 md:-right-6">
+            <p class="stat-pill-num">24/7</p>
+            <p class="stat-pill-label">czuwanie<br>w tle</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATUS BANNER -->
+  <div class="max-w-7xl mx-auto px-5 md:px-8 mt-10">
+    <p class="text-sm text-ink/60 text-center leading-relaxed">
+      <strong class="text-ink">STATUS PROJEKTU:</strong> RoboFriend jest obecnie w fazie budowy prototypu. Prezentowane grafiki to wizualizacje koncepcji, mogące zostać wygenerowane z użyciem AI.
+    </p>
+  </div>
+
+  <!-- TAB BAR — glassmorphism, frosted over the page as it scrolls underneath -->
+  <nav class="sticky top-0 z-40 glass-bar mt-8" aria-label="Nawigacja po sekcjach">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 flex gap-2 overflow-x-auto tab-bar-scroll py-3" role="tablist">
+      <a href="#glowna" class="tab-btn active" role="tab" aria-selected="true">
+        <img src="../media/pexels-cottonbro-5934642.jpg" alt="" class="tab-btn-img">
+        <span>Strona główna</span>
+      </a>
+      <a href="#o-projekcie" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/sample_photo.jpg" alt="" class="tab-btn-img">
+        <span>O Projekcie</span>
+      </a>
+      <a href="#technologia" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/sample_photo3.jpg" alt="" class="tab-btn-img">
+        <span>Technologia</span>
+      </a>
+      <a href="#inwestycja" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/sample_photo4.jpg" alt="" class="tab-btn-img">
+        <span>Inwestycja</span>
+      </a>
+      <a href="#partnerzy" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/pexels-ivan-s-7911306.jpg" alt="" class="tab-btn-img">
+        <span>Partnerzy</span>
+      </a>
+      <a href="#zespol" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/pexels-alex-green-6626060.jpg" alt="" class="tab-btn-img">
+        <span>Zespół</span>
+      </a>
+      <a href="#faq" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/pexels-shvets-production-7545241.jpg" alt="" class="tab-btn-img">
+        <span>FAQ</span>
+      </a>
+      <a href="#ankieta" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/pexels-rdne-7713339.jpg" alt="" class="tab-btn-img">
+        <span>Ankieta</span>
+      </a>
+      <a href="#zarezerwuj" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/sample_photo2.jpg" alt="" class="tab-btn-img">
+        <span>Zarezerwuj</span>
+      </a>
+      <a href="#kontakt" class="tab-btn" role="tab" aria-selected="false">
+        <img src="../media/pexels-ivan-s-7910784.jpg" alt="" class="tab-btn-img">
+        <span>Kontakt</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- TREŚĆ SEKCJI -->
+  <div class="max-w-5xl mx-auto px-5 md:px-8 py-16 md:py-20">
+
+    <!-- STRONA GŁÓWNA — index sekcji -->
+    <section id="glowna" class="tab-panel" role="tabpanel">
+      <p class="uppercase tracking-[0.2em] text-xs font-bold text-leaf mb-4">Technologia w służbie najbliższym</p>
+      <h2 class="font-display text-3xl md:text-5xl font-extrabold mb-3">Witaj w RoboFriend</h2>
+      <p class="text-lg text-ink/70 max-w-2xl mb-6">Wybierz sekcję poniżej, aby dowiedzieć się więcej o projekcie, technologii i sposobach zaangażowania się.</p>
+
+      <div>
+        <a href="#o-projekcie" class="index-row">
+          <span class="index-row-num">01</span>
+          <span class="index-row-img"><img src="../media/sample_photo.jpg" alt=""></span>
+          <span class="index-row-text">
+            <span class="index-row-title block">O Projekcie</span>
+            <span class="index-row-desc block">Wyzwanie, z którym się mierzymy: niezależność bez strachu.</span>
+          </span>
+          <span class="index-row-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#technologia" class="index-row">
+          <span class="index-row-num">02</span>
+          <span class="index-row-img"><img src="../media/sample_photo3.jpg" alt=""></span>
+          <span class="index-row-text">
+            <span class="index-row-title block">Technologia</span>
+            <span class="index-row-desc block">Ekosystem czujników i oprogramowania, niewidoczny dla użytkownika.</span>
+          </span>
+          <span class="index-row-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#inwestycja" class="index-row">
+          <span class="index-row-num">03</span>
+          <span class="index-row-img"><img src="../media/sample_photo4.jpg" alt=""></span>
+          <span class="index-row-text">
+            <span class="index-row-title block">Inwestycja w spokój</span>
+            <span class="index-row-desc block">Bezpieczeństwo, które nie musi kosztować tyle, co tradycyjna opieka.</span>
+          </span>
+          <span class="index-row-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#partnerzy" class="index-row">
+          <span class="index-row-num">04</span>
+          <span class="index-row-img"><img src="../media/pexels-ivan-s-7911306.jpg" alt=""></span>
+          <span class="index-row-text">
+            <span class="index-row-title block">Partnerzy</span>
+            <span class="index-row-desc block">Z Fundacją Gerio budujemy bezpieczną Silver Economy.</span>
+          </span>
+          <span class="index-row-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#zespol" class="index-row">
+          <span class="index-row-num">05</span>
+          <span class="index-row-img"><img src="../media/pexels-alex-green-6626060.jpg" alt=""></span>
+          <span class="index-row-text">
+            <span class="index-row-title block">Zespół</span>
+            <span class="index-row-desc block">Poznaj ludzi, którzy budują RoboFriend.</span>
+          </span>
+          <span class="index-row-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#faq" class="index-row">
+          <span class="index-row-num">06</span>
+          <span class="index-row-img"><img src="../media/pexels-shvets-production-7545241.jpg" alt=""></span>
+          <span class="index-row-text">
+            <span class="index-row-title block">FAQ</span>
+            <span class="index-row-desc block">Odpowiedzi na najczęstsze pytania o RoboFriend.</span>
+          </span>
+          <span class="index-row-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#ankieta" class="index-row">
+          <span class="index-row-num">07</span>
+          <span class="index-row-img"><img src="../media/pexels-rdne-7713339.jpg" alt=""></span>
+          <span class="index-row-text">
+            <span class="index-row-title block">Ankieta</span>
+            <span class="index-row-desc block">Twój głos pomoże nam zbudować lepsze rozwiązanie.</span>
+          </span>
+          <span class="index-row-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#zarezerwuj" class="index-row">
+          <span class="index-row-num">08</span>
+          <span class="index-row-img"><img src="../media/sample_photo2.jpg" alt=""></span>
+          <span class="index-row-text">
+            <span class="index-row-title block">Zarezerwuj</span>
+            <span class="index-row-desc block">Chcesz być pierwszy? Zgłoś zainteresowanie RoboFriend.</span>
+          </span>
+          <span class="index-row-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="#kontakt" class="index-row">
+          <span class="index-row-num">09</span>
+          <span class="index-row-img"><img src="../media/pexels-ivan-s-7910784.jpg" alt=""></span>
+          <span class="index-row-text">
+            <span class="index-row-title block">Kontakt</span>
+            <span class="index-row-desc block">Porozmawiajmy o RoboFriend.</span>
+          </span>
+          <span class="index-row-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- O PROJEKCIE -->
+    <section id="o-projekcie" class="tab-panel" role="tabpanel" hidden>
+      <h2 class="font-display text-3xl md:text-5xl font-extrabold mb-3">O Projekcie</h2>
+      <p class="text-lg text-ink/70 max-w-2xl mb-10">Wyzwanie, z którym się mierzymy: <strong class="text-ink">niezależność bez strachu.</strong></p>
+
+      <div class="grid md:grid-cols-5 gap-12 items-start">
+        <div class="md:col-span-3 space-y-5 text-lg leading-relaxed text-ink/75">
+          <p>Każdego dnia miliony seniorów na całym świecie stawiają czoła cichemu wrogowi, który odbiera im radość i swobodę życia we własnym domu. To nie jest choroba ani wiek. Strach przed Upadkiem, Strach o nagłe Pogorszenie Stanu Zdrowia, Strach o Izolację i Samotność, Strach przed Technologią.</p>
+          <p>Ten paraliżujący lęk sprawia, że codzienne, proste czynności, jak samodzielna kąpiel, stają się źródłem ogromnego stresu. Seniorzy zaczynają ograniczać swoją aktywność, obawiając się, że w razie wypadku nikt nie znajdzie ich przez wiele godzin.</p>
+          <p>Istniejące rozwiązania, takie jak opaski alarmowe, często zawodzą w kluczowych momentach. Trzeba o nich pamiętać, regularnie je ładować, a w chwili kryzysu trafienie w mały przycisk może być niemożliwe. Co więcej, wielu seniorów nie chce ich nosić, bo czują się stygmatyzowani, lub boją się wezwać pomoc z obawy przed fałszywym alarmem.</p>
+          <p class="font-semibold text-ink border-l-2 border-leaf pl-4">My wierzymy w inne podejście. Bezpieczeństwo nie powinno być kolejnym obowiązkiem.</p>
+          <p>Dlatego stworzyliśmy RoboFriend. To nie jest kolejne akcesorium, które trzeba nosić i pilnować. To w pełni niezależny, autonomiczny i inteligentny Anioł Stróż, który po prostu jest i czuwa w tle, 24 godziny na dobę. Daje poczucie, że pomoc jest zawsze blisko, nawet gdy my jesteśmy daleko, nie odbierając przy tym seniorowi godności i poczucia normalności.</p>
+          <p>Dane demograficzne dla Polski i Europy są jednoznaczne – społeczeństwo się starzeje, a wyzwanie zapewnienia bezpiecznej jesieni życia naszym bliskim rośnie z roku na rok. Nadszedł czas na technologię, która naprawdę rozumie człowieka.</p>
+        </div>
+        <div class="md:col-span-2 duo-figure">
+          <div class="duo-figure-main">
+            <img src="../media/sample_photo.jpg" alt="Seniorka we własnym domu, w towarzystwie psa">
+          </div>
+          <div class="duo-figure-small">
+            <img src="../media/sample_photo5.jpg" alt="Para seniorów spędzająca czas razem">
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 flex flex-wrap gap-4 border-t border-line pt-10">
+        <div class="stat-pill">
+          <p class="stat-pill-num text-blue">11,8 mln</p>
+          <p class="stat-pill-label">seniorów (65+) w Polsce do 2060 r. — niemal 40% populacji.<br><span class="text-ink/30">GUS, Prognoza ludności 2023–2060</span></p>
+        </div>
+        <div class="stat-pill">
+          <p class="stat-pill-num text-leaf">22,0%</p>
+          <p class="stat-pill-label">populacji UE to dziś osoby 65+; do 2100 r. — 32,5%.<br><span class="text-ink/30">Eurostat</span></p>
+        </div>
+        <div class="stat-pill">
+          <p class="stat-pill-num text-blue">+5,6 p.p.</p>
+          <p class="stat-pill-label">wzrost udziału seniorów w Polsce, 2015–2025 — najwyższy w UE.<br><span class="text-ink/30">GUS</span></p>
+        </div>
+      </div>
+
+      <div class="mt-16 border-t border-line pt-10">
+        <h3 class="font-display text-xl font-bold mb-8">Głosy rodzin</h3>
+        <p class="text-sm text-ink/50 mb-8 max-w-xl">Wypowiedzi ilustracyjne, zebrane podczas rozmów i wstępnych ankiet z rodzinami seniorów.</p>
+        <div class="grid gap-8">
+          <blockquote>
+            <p class="text-ink/75 leading-relaxed text-lg">„Najbardziej boję się dnia, w którym coś się stanie mamie, a ja się o tym nie dowiem od razu. Robot czuwający w tle daje mi nadzieję na spokojniejsze noce."</p>
+            <footer class="mt-4 text-sm font-semibold text-blue">— Opiekunka rodzinna</footer>
+          </blockquote>
+          <blockquote>
+            <p class="text-ink/75 leading-relaxed text-lg">„Nie chcę nosić opaski, bo czuję się przez nią chora. Coś, co po prostu jest w domu i nie trzeba o nim pamiętać, brzmi dla mnie dużo lepiej."</p>
+            <footer class="mt-4 text-sm font-semibold text-leaf">— Senior, uczestnik ankiety</footer>
+          </blockquote>
+          <blockquote>
+            <p class="text-ink/75 leading-relaxed text-lg">„Mieszkam za granicą i nie mogę być przy rodzicach codziennie. Coś takiego jak RoboFriend to dla mnie realne wsparcie, nie kolejny gadżet."</p>
+            <footer class="mt-4 text-sm font-semibold text-ink/60">— Syn seniora</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNOLOGIA -->
+    <section id="technologia" class="tab-panel" role="tabpanel" hidden>
+      <h2 class="font-display text-3xl md:text-5xl font-extrabold mb-3">Technologia</h2>
+      <p class="text-lg text-ink/70 max-w-2xl mb-10">Niewidoczna dla użytkownika — a jednak zaawansowana.</p>
+
+      <p class="text-lg leading-relaxed text-ink/75 mb-6">W Robo Friends Tech wierzymy, że najlepsza technologia to taka, która jest niewidoczna dla użytkownika. RoboFriend został zaprojektowany, aby być intuicyjnym i przyjaznym towarzyszem, ale w jego wnętrzu kryje się zaawansowany ekosystem czujników, procesorów i unikatowego oprogramowania, które pracują razem, by zapewnić bezpieczeństwo i spokój ducha.</p>
+
+      <div>
+        <div class="numbered-row">
+          <span class="numbered-row-num">01</span>
+          <div>
+            <p class="numbered-row-title">Czujniki</p>
+            <p class="numbered-row-desc">Stałe, dyskretne wyczuwanie otoczenia bez konieczności noszenia urządzeń.</p>
+          </div>
+        </div>
+        <div class="numbered-row">
+          <span class="numbered-row-num">02</span>
+          <div>
+            <p class="numbered-row-title">Autonomia</p>
+            <p class="numbered-row-desc">Samodzielne poruszanie się i czuwanie 24 godziny na dobę.</p>
+          </div>
+        </div>
+        <div class="numbered-row">
+          <span class="numbered-row-num">03</span>
+          <div>
+            <p class="numbered-row-title">Oprogramowanie</p>
+            <p class="numbered-row-desc">Unikatowe algorytmy łączące dane z ekosystemu w spójny obraz sytuacji.</p>
+          </div>
+        </div>
+        <div class="numbered-row">
+          <span class="numbered-row-num">04</span>
+          <div>
+            <p class="numbered-row-title">Dyskrecja</p>
+            <p class="numbered-row-desc">Towarzysz zaprojektowany tak, by nie przypominać o chorobie czy wieku.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INWESTYCJA W SPOKÓJ -->
+    <section id="inwestycja" class="tab-panel" role="tabpanel" hidden>
+      <h2 class="font-display text-3xl md:text-5xl font-extrabold mb-3">Inwestycja w spokój</h2>
+      <p class="text-lg text-ink/70 max-w-2xl mb-10">Inwestycja, która się zwraca.</p>
+
+      <div class="grid md:grid-cols-5 gap-12 items-center">
+        <div class="md:col-span-3 space-y-5 text-lg leading-relaxed text-ink/75">
+          <p>Zapewnienie bezpieczeństwa i komfortu bliskim nie musi oznaczać ogromnych, comiesięcznych wydatków. Zobacz, jak koszt RoboFriend wypada w porównaniu z tradycyjnymi formami opieki. Koszty dodatkowych leków i wizyt lekarskich często są konsekwencją późnej reakcji na zdarzenia w domu.</p>
+          <p class="font-semibold text-ink border-l-2 border-leaf pl-4">Już czas połączyć tradycyjne metody z nowoczesną technologią.</p>
+        </div>
+        <div class="md:col-span-2 duo-figure">
+          <div class="duo-figure-main">
+            <img src="../media/sample_photo4.jpg" alt="Para seniorów odpoczywająca razem nad wodą, w spokoju">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERZY -->
+    <section id="partnerzy" class="tab-panel" role="tabpanel" hidden>
+      <h2 class="font-display text-3xl md:text-5xl font-extrabold mb-3">Partnerzy</h2>
+      <p class="text-lg text-ink/70 max-w-2xl mb-10">Zaawansowany hardware potrzebuje silnego, biznesowego serca.</p>
+
+      <div class="grid md:grid-cols-5 gap-12 items-center mb-14">
+        <div class="md:col-span-3 space-y-5 text-lg leading-relaxed text-ink/75">
+          <p>W RoboFriend wierzymy, że zaawansowany hardware potrzebuje silnego, biznesowego serca. Dlatego naszym strategicznym partnerem jest <strong class="text-blue">Fundacja Gerio</strong> – organizacja, która rewolucjonizuje rynek usług opiekuńczych i rehabilitacyjnych w Polsce.</p>
+          <p>RoboFriend wchodzi do tego ekosystemu jako całodobowe, technologiczne wsparcie podopiecznego, idealnie integrując się z platformą Gerio. Razem tworzymy bezpieczną przyszłość <strong>Silver Economy</strong>.</p>
+          <p class="text-ink/50">Sprawdź, jak Gerio zmienia standardy opieki w Polsce i zobacz ich aktualne działania.</p>
+        </div>
+        <div class="md:col-span-2 duo-figure">
+          <div class="duo-figure-main">
+            <img src="../media/pexels-ivan-s-7911306.jpg" alt="Para seniorów świętująca razem, radość i bliskość">
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="numbered-row">
+          <span class="numbered-row-num">01</span>
+          <div>
+            <p class="numbered-row-title">Opieka Hybrydowa</p>
+            <p class="numbered-row-desc">Łączy profesjonalną, fizyczną opiekę i rehabilitację z nowoczesnymi technologiami asystującymi.</p>
+          </div>
+        </div>
+        <div class="numbered-row">
+          <span class="numbered-row-num">02</span>
+          <div>
+            <p class="numbered-row-title">System Weryfikacji</p>
+            <p class="numbered-row-desc">Gotowy system zarządzania opieką: transparentność, raportowanie, pełna weryfikacja usług.</p>
+          </div>
+        </div>
+        <div class="numbered-row">
+          <span class="numbered-row-num">03</span>
+          <div>
+            <p class="numbered-row-title">Ogólnopolska Sieć</p>
+            <p class="numbered-row-desc">Placówki partnerskie przenoszące zachodnie standardy opieki (m.in. UK) na polski grunt.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ZESPÓŁ -->
+    <section id="zespol" class="tab-panel" role="tabpanel" hidden>
+      <h2 class="font-display text-3xl md:text-5xl font-extrabold mb-3">Zespół</h2>
+      <p class="text-lg text-ink/70 max-w-2xl mb-10">Strona zespołu jest w przygotowaniu.</p>
+
+      <div class="grid md:grid-cols-5 gap-12 items-center">
+        <div class="md:col-span-3">
+          <div class="profile-card">
+            <img src="https://placehold.co/200x200/F1E9D9/2C4C6B?text=KS" alt="Zdjęcie: Krystian Skrzypalik">
+            <div>
+              <p class="font-display font-bold text-lg">Krystian Skrzypalik</p>
+              <p class="text-sm text-ink/50">CEO &amp; Founder</p>
+            </div>
+          </div>
+          <p class="mt-8 text-ink/50">Kolejne osoby dołączą w miarę rozwoju projektu.</p>
+        </div>
+        <div class="md:col-span-2 duo-figure">
+          <div class="duo-figure-main">
+            <img src="../media/pexels-alex-green-6626060.jpg" alt="Para seniorów z poczuciem humoru, w dobrych humorach">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="tab-panel" role="tabpanel" hidden>
+      <h2 class="font-display text-3xl md:text-5xl font-extrabold mb-10">Najczęściej zadawane pytania</h2>
+
+      <div class="space-y-3" id="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display font-bold text-lg" aria-expanded="false">
+            Czym dokładnie jest RoboFriend?
+            <svg class="faq-icon shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#2C4C6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-panel px-6 text-ink/70 leading-relaxed">
+            <p class="pb-5">RoboFriend to autonomiczny, mobilny robot domowy — inteligentny Anioł Stróż, który dyskretnie czuwa nad bezpieczeństwem seniora 24 godziny na dobę, bez konieczności noszenia dodatkowych urządzeń.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display font-bold text-lg" aria-expanded="false">
+            Czy RoboFriend zastępuje opiekuna lub rodzinę?
+            <svg class="faq-icon shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#2C4C6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-panel px-6 text-ink/70 leading-relaxed">
+            <p class="pb-5">Nie. RoboFriend uzupełnia opiekę bliskich i profesjonalistów — daje poczucie, że pomoc jest blisko także wtedy, gdy rodzina nie może być na miejscu, integrując się przy tym z ekosystemem opieki naszego partnera Gerio.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display font-bold text-lg" aria-expanded="false">
+            Czy korzystanie z RoboFriend wymaga noszenia dodatkowych urządzeń?
+            <svg class="faq-icon shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#2C4C6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-panel px-6 text-ink/70 leading-relaxed">
+            <p class="pb-5">Nie — to jedna z głównych przewag RoboFriend nad opaskami alarmowymi. Nie trzeba o nim pamiętać ani go ładować osobno — czuwa w tle, jako w pełni niezależne urządzenie.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display font-bold text-lg" aria-expanded="false">
+            Na jakim etapie jest obecnie projekt?
+            <svg class="faq-icon shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#2C4C6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-panel px-6 text-ink/70 leading-relaxed">
+            <p class="pb-5">RoboFriend jest obecnie w fazie budowy prototypu. Prezentowane grafiki to wizualizacje koncepcji — stronę aktualizujemy wraz z postępami prac.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display font-bold text-lg" aria-expanded="false">
+            Jak wygląda kwestia prywatności danych?
+            <svg class="faq-icon shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#2C4C6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-panel px-6 text-ink/70 leading-relaxed">
+            <p class="pb-5">Prywatność traktujemy priorytetowo już na etapie projektowania. Dane z naszej ankiety są w pełni anonimowe i analizowane wyłącznie zbiorczo — szczegóły znajdziesz w sekcji Ankieta.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger w-full flex items-center justify-between gap-4 text-left px-6 py-5 font-display font-bold text-lg" aria-expanded="false">
+            Ile będzie kosztować RoboFriend?
+            <svg class="faq-icon shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#2C4C6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-panel px-6 text-ink/70 leading-relaxed">
+            <p class="pb-5">Pracujemy nad modelem, który będzie tańszy niż tradycyjne, comiesięczne formy opieki. Szczegółowy cennik ogłosimy bliżej premiery — zostaw e-mail w formularzu rezerwacji, aby dowiedzieć się pierwszym.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-12 pt-10 border-t border-line">
+        <p class="text-ink/70">Nie znalazłeś odpowiedzi na swoje pytanie? Napisz do nas: <a href="mailto:krystian.skrzypalik@robofriendstech.pl?subject=Pytanie%20o%20RoboFriend" class="font-semibold text-blue hover:text-leaf break-all">krystian.skrzypalik@robofriendstech.pl</a></p>
+      </div>
+    </section>
+
+    <!-- ANKIETA -->
+    <section id="ankieta" class="tab-panel" role="tabpanel" hidden>
+      <h2 class="font-display text-3xl md:text-5xl font-extrabold mb-10">Ankieta</h2>
+
+      <div class="grid md:grid-cols-5 gap-12 items-center mb-4">
+        <div class="md:col-span-3">
+          <p class="text-lg leading-relaxed text-ink/75">Tworzymy RoboFriend z myślą o realnych potrzebach seniorów i ich rodzin. Dlatego Twoje doświadczenia, obawy i sugestie są dla nas bezcenne. Poświęć kilka minut na wypełnienie naszej ankiety i pomóż nam zbudować rozwiązanie, które naprawdę zmieni czyjeś życie na lepsze. Każda odpowiedź to krok w stronę bezpieczniejszej i spokojniejszej przyszłości dla naszych bliskich.</p>
+          <a href="#" class="mt-8 pill-btn pill-btn-dark">Wypełnij Ankietę</a>
+        </div>
+        <div class="md:col-span-2 duo-figure">
+          <div class="duo-figure-main">
+            <img src="../media/pexels-rdne-7713339.jpg" alt="Seniorka robiąca sobie selfie z młodszym pokoleniem rodziny">
+          </div>
+        </div>
+      </div>
+      <p class="mt-8 text-sm text-ink/50 max-w-2xl leading-relaxed border-t border-line pt-8">
+        <strong class="text-ink/70">Informacja RODO:</strong> Administratorem Twoich danych jest Robo Friends Tech P.S.A. Wszystkie odpowiedzi udzielone w tej ankiecie są w pełni anonimowe i będą wykorzystywane wyłącznie w celach statystycznych i badawczych, aby pomóc nam w udoskonaleniu naszego produktu. Analizujemy dane zbiorczo i nie identyfikujemy poszczególnych respondentów. Podanie adresu e-mail na końcu ankiety jest całkowicie dobrowolne i służy jedynie do informowania Cię o postępach w naszym projekcie, zgodnie z Twoją zgodą. W każdej chwili masz prawo do wycofania zgody i usunięcia swoich danych z naszej listy mailingowej.
+      </p>
+    </section>
+
+    <!-- ZAREZERWUJ -->
+    <section id="zarezerwuj" class="tab-panel" role="tabpanel" hidden>
+      <h2 class="font-display text-3xl md:text-5xl font-extrabold mb-4">Chcesz być Pierwszy?</h2>
+      <p class="text-lg text-blue font-semibold max-w-2xl mb-10">Zarezerwuj RoboFriend!!</p>
+
+      <div class="grid md:grid-cols-5 gap-12 items-center">
+        <div class="md:col-span-3">
+          <p class="text-lg leading-relaxed text-ink/75 mb-8">Zgłoś zainteresowanie RoboFriend — bądź na bieżąco z postępami prac i zdobądź pierwszeństwo w dostępie do prototypu.</p>
+          <div class="flex flex-wrap items-center gap-5">
+            <a href="#" class="pill-btn pill-btn-dark">Zarezerwuj Swojego RoboFriend</a>
+            <div class="glass-chip is-light">
+              <div class="avatar-stack" aria-hidden="true">
+                <img src="../media/sample_photo2.jpg" alt="">
+                <img src="../media/pexels-rdne-7713339.jpg" alt="">
+                <img src="../media/pexels-shvets-production-7545241.jpg" alt="">
+                <span class="avatar-stack-more" style="background:#2C4C6B;">+</span>
+              </div>
+              <p class="text-xs text-ink/60 max-w-[9rem] leading-snug">Dołącz do zainteresowanych rodzin</p>
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-2 duo-figure">
+          <div class="duo-figure-main">
+            <img src="../media/sample_photo2.jpg" alt="Para seniorów na spacerze, niezależnie i pewnie">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt" class="tab-panel" role="tabpanel" hidden>
+      <h2 class="font-display text-3xl md:text-5xl font-extrabold mb-3">Kontakt</h2>
+      <p class="text-lg text-ink/70 max-w-2xl mb-10">Zapraszamy do kontaktu.</p>
+
+      <div class="grid md:grid-cols-5 gap-12 items-center">
+        <div class="md:col-span-3">
+          <p class="font-display text-xl font-bold">Krystian Skrzypalik</p>
+          <p class="text-ink/50 mb-6">CEO &amp; Founder</p>
+          <p class="flex items-center gap-2 mb-2"><span class="font-semibold text-blue">Mobile:</span> <a href="tel:+48665945049" class="hover:text-leaf">+48 665 945 049</a></p>
+          <p class="flex items-center gap-2"><span class="font-semibold text-blue">E-mail:</span> <a href="mailto:krystian.skrzypalik@robofriendstech.pl" class="hover:text-leaf break-all">krystian.skrzypalik@robofriendstech.pl</a></p>
+        </div>
+        <div class="md:col-span-2 duo-figure">
+          <div class="duo-figure-main">
+            <img src="../media/pexels-ivan-s-7910784.jpg" alt="Para seniorów wymieniająca się bukietem kwiatów">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</main>
+
+<!-- STOPKA — glassmorphism -->
+<footer class="glass-dark text-white/60">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+    <p>© 2025 Robo Friends Tech P.S.A. Wszelkie prawa zastrzeżone.</p>
+    <div class="flex gap-6">
+      <a href="#" class="hover:text-white">Polityka Prywatności</a>
+      <a href="#" class="hover:text-white">Regulamin</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

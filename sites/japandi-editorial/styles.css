@@ -1,0 +1,416 @@
+/* RoboFriend — wariant "japandi-editorial" (na bazie warm, wzorzec: Japandist) */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #2C4C6B;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #2C4C6B;
+  outline-offset: 2px;
+}
+
+/* Big quote — an oversized decorative serif quotation mark behind testimonial text,
+   experimenting with a popular editorial/magazine motif that suits the italic serif identity. */
+.big-quote {
+  position: relative;
+  padding-left: 1.75rem;
+}
+.big-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: -2.75rem;
+  left: -0.75rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 6.5rem;
+  line-height: 1;
+  color: rgba(43, 36, 24, 0.14);
+  z-index: 0;
+  pointer-events: none;
+}
+.big-quote > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Circular / oval photo cutouts — the recurring Japandi editorial motif */
+.circle-frame {
+  border-radius: 50%;
+  overflow: hidden;
+  background: #E4D9C4;
+  flex-shrink: 0;
+}
+.circle-frame-sm {
+  width: 130px;
+  height: 130px;
+}
+.circle-frame-md {
+  width: 120px;
+  height: 210px;
+}
+.circle-frame-lg {
+  width: 200px;
+  height: 200px;
+}
+@media (min-width: 768px) {
+  .circle-frame-sm {
+    width: 160px;
+    height: 160px;
+  }
+  .circle-frame-md {
+    width: 150px;
+    height: 260px;
+  }
+  .circle-frame-lg {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+/* Tab bar — slim text-only index, editorial in tone */
+.tab-bar-scroll {
+  scrollbar-width: none;
+}
+.tab-bar-scroll::-webkit-scrollbar {
+  display: none;
+}
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 1.1rem 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: rgba(43, 36, 24, 0.5);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.tab-btn:hover {
+  color: #2B2418;
+}
+.tab-btn.active {
+  color: #2C4C6B;
+  border-bottom-color: #2C4C6B;
+}
+
+/* Content zone — a wide, warm bronze band behind all the tabbed panels,
+   instead of floating directly on the plain cream page background. */
+.content-bronze {
+  background: #F1E9D9;
+}
+/* The beige background dims low-opacity ink text more than the old plain cream did —
+   darken those secondary/caption weights specifically within this zone. */
+.content-bronze [class*="text-ink/40"] {
+  color: rgba(43, 36, 24, 0.62);
+}
+.content-bronze [class*="text-ink/50"] {
+  color: rgba(43, 36, 24, 0.68);
+}
+.content-bronze [class*="text-ink/60"] {
+  color: rgba(43, 36, 24, 0.78);
+}
+
+/* Hero video — a bronze cast instead of a bright, untinted clip */
+.hero-video {
+  filter: sepia(25%) saturate(120%) brightness(0.8);
+}
+
+/* Homepage stat band — the O Projekcie stats, promoted to the top of the homepage
+   as an attention-grabbing hook. Flat, full page-width dark band instead of cards. */
+.stat-band {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: #3D2B1C;
+  padding: 3.25rem 0;
+  margin-bottom: 3.5rem;
+}
+.stat-flat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 2.25rem;
+}
+.stat-flat-label {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: rgba(251, 247, 240, 0.78);
+  line-height: 1.5;
+}
+.stat-flat-source {
+  margin-top: 0.5rem;
+  font-size: 0.72rem;
+  color: rgba(251, 247, 240, 0.42);
+}
+
+/* Hero glass panel — floats on one side of the video, translucent, doesn't hide it.
+   Tinted beige/bronze rather than bright cream, to match the old editorial mood. */
+.hero-glass {
+  padding: 2.5rem 2.25rem;
+  border-radius: 1.5rem;
+  background: rgba(241, 233, 217, 0.62);
+  backdrop-filter: blur(26px) saturate(150%);
+  -webkit-backdrop-filter: blur(26px) saturate(150%);
+  border: 1px solid rgba(241, 233, 217, 0.7);
+  box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+@media (min-width: 768px) {
+  .hero-glass {
+    padding: 3.25rem;
+  }
+}
+
+/* Carousel — swipeable glass slides cycling through the main categories */
+.carousel {
+  position: relative;
+}
+.carousel-track {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 0.25rem;
+  padding-bottom: 0.25rem;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+.carousel-track.dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+.carousel-slide {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  flex: 0 0 92%;
+  scroll-snap-align: start;
+  height: 420px;
+  border-radius: 1.5rem;
+  background: #E4D9C4;
+  text-decoration: none;
+  -webkit-user-drag: none;
+}
+@media (min-width: 640px) {
+  .carousel-slide {
+    flex-basis: 66%;
+  }
+}
+@media (min-width: 1024px) {
+  .carousel-slide {
+    flex-basis: 48%;
+    height: 480px;
+  }
+}
+.carousel-slide img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+.carousel-slide:hover img {
+  transform: scale(1.05);
+}
+.carousel-slide-overlay {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  padding: 1.1rem 1.3rem;
+  border-radius: 1.1rem;
+  background: rgba(43, 36, 24, 0.4);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(251, 247, 240, 0.28);
+  transition: background-color 0.2s ease;
+}
+.carousel-slide:hover .carousel-slide-overlay {
+  background: rgba(43, 36, 24, 0.52);
+}
+.carousel-slide-title {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.35rem;
+  color: #FBF7F0;
+  margin-bottom: 0.35rem;
+}
+.carousel-slide-desc {
+  display: block;
+  color: rgba(251, 247, 240, 0.78);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(251, 247, 240, 0.5);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(251, 247, 240, 0.65);
+  box-shadow: 0 12px 26px -12px rgba(43, 36, 24, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  color: #2B2418;
+  cursor: pointer;
+  z-index: 5;
+  transition: background-color 0.2s ease;
+}
+.carousel-btn:hover {
+  background: rgba(251, 247, 240, 0.8);
+}
+.carousel-prev {
+  left: -6px;
+}
+.carousel-next {
+  right: -6px;
+}
+@media (min-width: 768px) {
+  .carousel-prev {
+    left: -22px;
+  }
+  .carousel-next {
+    right: -22px;
+  }
+}
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 1.5rem;
+}
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  padding: 0;
+  border: none;
+  background: rgba(43, 36, 24, 0.2);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.carousel-dot.active {
+  background: #2C4C6B;
+  transform: scale(1.35);
+}
+
+/* Ankieta — dark bronze section, sits outside the tab rotation, at the bottom of the site */
+.ankieta-dark {
+  background: #3D2B1C;
+  color: #FBF7F0;
+}
+.ankieta-field {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid #E4D9C4;
+  background: #FBF7F0;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #2B2418;
+  transition: border-color 0.2s ease;
+}
+.ankieta-field::placeholder {
+  color: rgba(43, 36, 24, 0.35);
+}
+.ankieta-field:focus {
+  outline: none;
+  border-color: #2C4C6B;
+}
+textarea.ankieta-field {
+  resize: vertical;
+  min-height: 100px;
+}
+.ankieta-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 9999px;
+  border: 1.5px solid #E4D9C4;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.ankieta-radio:has(input:checked) {
+  border-color: #8FB4CE;
+  background: rgba(143, 180, 206, 0.15);
+}
+.ankieta-radio input {
+  accent-color: #2C4C6B;
+}
+
+/* Content panels — only the active one is shown */
+.tab-panel[hidden] {
+  display: none;
+}
+.tab-panel {
+  scroll-margin-top: 8rem;
+}
+
+/* FAQ accordion — quiet, no card chrome */
+.faq-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-item.open .faq-panel {
+  max-height: 400px;
+}
+.faq-icon {
+  transition: transform 0.25s ease;
+}
+.faq-item.open .faq-icon {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .faq-panel,
+  .faq-icon {
+    transition: none;
+  }
+}
