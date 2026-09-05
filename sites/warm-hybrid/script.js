@@ -76,4 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = `mailto:krystian.skrzypalik@robofriendstech.pl?subject=${subject}&body=${body}`;
     });
   }
+
+  // Footer copyright year — always current, no manual updates needed
+  const footerYear = document.getElementById('footer-year');
+  if (footerYear) {
+    footerYear.textContent = new Date().getFullYear();
+  }
 });
