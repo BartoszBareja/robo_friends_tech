@@ -3,7 +3,7 @@ import cv2
 import os
 
 # model
-model = YOLO("yolo-Weights/trained_yolo26.pt")
+model = YOLO("yolo-Weights/yolo26n_new.pt")
 
 # object classes
 classNames = ["fallen", "falling", "sitting", "stand"]

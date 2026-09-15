@@ -1,6 +1,7 @@
 from ultralytics import YOLO
 
-model = YOLO("yolo-Weights/yolo26n.pt")
-model.train(data="datasets/test_data", epochs=5, imgsz=640)
+if __name__ == "__main__":
+    model = YOLO("yolo-Weights/yolo26n.pt")
+    results = model.train(data="datasets/test_data", epochs=10, imgsz=640)
 
-model.save("yolo26n_new.pth")
+    model.save("yolo-Weights/yolo26n_new.pt")
