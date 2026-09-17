@@ -1,4 +1,5 @@
 import base64
+import calendar as calendar_module
 import io
 import secrets
 import socket
@@ -9,6 +10,12 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+
+MONTH_NAMES = [
+    "Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec",
+    "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień",
+]
+WEEKDAY_LABELS = ["Pon", "Wt", "Śr", "Czw", "Pt", "Sob", "Nie"]
 
 app = FastAPI()
 
@@ -37,6 +44,19 @@ def get_lan_ip() -> str:
         sock.close()
 
 
+def build_calendar_context() -> dict:
+    """Current month as a Monday-first week grid, for the kiosk's calendar screen."""
+    today = datetime.now()
+    weeks = calendar_module.Calendar(firstweekday=0).monthdayscalendar(today.year, today.month)
+    return {
+        "month_name": MONTH_NAMES[today.month - 1],
+        "year": today.year,
+        "weekday_labels": WEEKDAY_LABELS,
+        "weeks": weeks,
+        "today": today.day,
+    }
+
+
 @app.get("/")
 def home(request: Request, token: str | None = None):
     global connected
@@ -63,11 +83,12 @@ def home(request: Request, token: str | None = None):
 
     return templates.TemplateResponse(
         request=request,
-        name="base.html",
+        name="kiosk.html",
         context={
             "site_url": site_url,
             "qr_code_base64": qr_code_base64,
             "connected": connected,
+            "calendar": build_calendar_context(),
         },
     )
 

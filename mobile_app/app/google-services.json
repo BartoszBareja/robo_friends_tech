@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "331567567775",
+    "project_id": "robofriendstech",
+    "storage_bucket": "robofriendstech.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331567567775:android:b448eed85470d6edb0a3aa",
+        "android_client_info": {
+          "package_name": "com.example.robofriendstech"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXWpIIO8wtKbibjO1KNCpvu6MBRZKFdqI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
