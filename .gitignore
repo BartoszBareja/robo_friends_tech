@@ -1,4 +1,10 @@
-/datasets/
+/yolo_model/datasets/
 /results/
 /runs/
-/test_images/
+/yolo_model/test_images/
+/yolo_model/datasets/
+/yolo_model/test_images/
+/yolo_model/yolo-Weights/
+/yolo_model/datasets/dataset4/
+/yolo_model/datasets/test_data/
+/yolo_model/test_images/
