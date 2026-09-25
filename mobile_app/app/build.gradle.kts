@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.firebase.messaging)
     implementation(libs.play.services.code.scanner)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)

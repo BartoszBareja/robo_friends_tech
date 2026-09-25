@@ -1,5 +1,4 @@
 import base64
-import calendar as calendar_module
 import io
 import secrets
 import socket
@@ -7,15 +6,9 @@ from datetime import datetime, timezone
 
 import qrcode
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-
-MONTH_NAMES = [
-    "Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec",
-    "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień",
-]
-WEEKDAY_LABELS = ["Pon", "Wt", "Śr", "Czw", "Pt", "Sob", "Nie"]
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -24,12 +17,28 @@ templates = Jinja2Templates(directory="templates")
 
 ROBOT_NAME = "RoboFriend"
 
+latest: dict | None = None
+
 connected = False
 
 # Random per-run secret. Only requests carrying this token (i.e. whoever scanned
 # the QR code) are let in from outside this machine, so opening the firewall to
 # the LAN doesn't hand control of the robot to anyone else on the network.
 ACCESS_TOKEN = secrets.token_urlsafe(16)
+
+
+class YoloPrediction(BaseModel):
+    cls: int | None = None
+    label: str | None = None
+
+
+def authorize(request: Request, token: str | None) -> None:
+    """Allow requests from this machine unconditionally; anything else needs the token."""
+    is_local = request.client is not None and request.client.host in ("127.0.0.1", "::1")
+    if is_local:
+        return
+    if not token or not secrets.compare_digest(token, ACCESS_TOKEN):
+        raise HTTPException(status_code=403, detail="Forbidden")
 
 
 def get_lan_ip() -> str:
@@ -42,19 +51,6 @@ def get_lan_ip() -> str:
         return socket.gethostbyname(socket.gethostname())
     finally:
         sock.close()
-
-
-def build_calendar_context() -> dict:
-    """Current month as a Monday-first week grid, for the kiosk's calendar screen."""
-    today = datetime.now()
-    weeks = calendar_module.Calendar(firstweekday=0).monthdayscalendar(today.year, today.month)
-    return {
-        "month_name": MONTH_NAMES[today.month - 1],
-        "year": today.year,
-        "weekday_labels": WEEKDAY_LABELS,
-        "weeks": weeks,
-        "today": today.day,
-    }
 
 
 @app.get("/")
@@ -88,7 +84,6 @@ def home(request: Request, token: str | None = None):
             "site_url": site_url,
             "qr_code_base64": qr_code_base64,
             "connected": connected,
-            "calendar": build_calendar_context(),
         },
     )
 
@@ -112,6 +107,28 @@ def api_connect(request: Request, token: str | None = None):
         "connected_at": datetime.now(timezone.utc).isoformat(),
         "client_ip": request.client.host if request.client else None,
     }
+
+
+@app.post("/api/yolo")
+def api_yolo(request: Request, prediction: YoloPrediction, token: str | None = None):
+    """Hit by yolo_model every 15 seconds with its latest detection result."""
+    global latest
+
+    authorize(request, token)
+
+    latest = {
+        "cls": prediction.cls,
+        "label": prediction.label,
+        "received_at": datetime.now(timezone.utc).isoformat(),
+    }
+    return {"status": "received"}
+
+
+@app.get("/api/latest")
+def api_latest(request: Request, token: str | None = None):
+    """Returns the most recent yolo_model prediction, or null if none has arrived yet."""
+    authorize(request, token)
+    return {"latest": latest}
 
 
 if __name__ == "__main__":
