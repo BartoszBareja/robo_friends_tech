@@ -12,7 +12,6 @@ data class ScannedTarget(
     val scheme: String,
     val host: String,
     val port: Int,
-    val token: String,
 ) {
     val id: String get() = "$host:$port"
 }
@@ -24,16 +23,14 @@ data class ConnectionInfo(
     val clientIp: String,
 )
 
-/** The QR code encodes the robot's welcome page (`http://<jetson-ip>:<port>/?token=...`). */
+/** The QR code encodes the robot's welcome page (`http://<jetson-ip>:<port>/`). */
 fun parseScannedUrl(rawValue: String): ScannedTarget {
     val uri = Uri.parse(rawValue)
-    val token = uri.getQueryParameter("token")
-        ?: throw IllegalArgumentException("Kod QR nie zawiera tokenu połączenia.")
     val host = uri.host
         ?: throw IllegalArgumentException("Kod QR nie zawiera prawidłowego adresu.")
     val scheme = uri.scheme ?: "http"
     val port = if (uri.port != -1) uri.port else 80
-    return ScannedTarget(scheme, host, port, token)
+    return ScannedTarget(scheme, host, port)
 }
 
 /**
@@ -41,7 +38,7 @@ fun parseScannedUrl(rawValue: String): ScannedTarget {
  * structured connection info back instead of an HTML page meant for a browser.
  */
 suspend fun fetchConnectionInfo(target: ScannedTarget): ConnectionInfo = withContext(Dispatchers.IO) {
-    val apiUrl = URL("${target.scheme}://${target.host}:${target.port}/api/connect?token=${target.token}")
+    val apiUrl = URL("${target.scheme}://${target.host}:${target.port}/api/connect")
     val connection = apiUrl.openConnection() as HttpURLConnection
     connection.requestMethod = "GET"
     connection.connectTimeout = 5000

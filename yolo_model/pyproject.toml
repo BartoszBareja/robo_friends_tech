@@ -1,0 +1,20 @@
+[project]
+name = "yolo-model"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.11"
+dependencies = [
+    "opencv-python>=5.0.0.93",
+    "requests>=2.32.0",
+    "ultralytics>=8.4.159",
+]
+
+# The containers here have no GPU passthrough configured, so pull the much
+# smaller CPU-only torch build instead of the multi-GB CUDA one ultralytics
+# would otherwise resolve to.
+[tool.uv]
+index-strategy = "unsafe-best-match"
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"

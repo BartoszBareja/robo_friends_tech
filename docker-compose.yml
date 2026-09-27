@@ -1,0 +1,9 @@
+services:
+  jetson_app:
+    build: jetson_app
+    ports:
+      - "8000:8000"
+  yolo_app:
+    build: yolo_model
+    depends_on:
+      - jetson_app

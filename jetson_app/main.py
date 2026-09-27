@@ -1,11 +1,12 @@
 import base64
+import hashlib
 import io
-import secrets
+import os
 import socket
 from datetime import datetime, timezone
 
 import qrcode
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
@@ -15,30 +16,28 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
+
+def static_version(path: str) -> str:
+    """Short content hash of a file under static/, used as a cache-busting query
+    param. Based on content rather than mtime, since Docker's build cache and
+    COPY can preserve or reset file timestamps in ways that don't reliably
+    track an actual content change."""
+    with open(os.path.join("static", path), "rb") as f:
+        return hashlib.sha1(f.read()).hexdigest()[:10]
+
+
+templates.env.globals["static_version"] = static_version
+
 ROBOT_NAME = "RoboFriend"
 
 latest: dict | None = None
 
 connected = False
 
-# Random per-run secret. Only requests carrying this token (i.e. whoever scanned
-# the QR code) are let in from outside this machine, so opening the firewall to
-# the LAN doesn't hand control of the robot to anyone else on the network.
-ACCESS_TOKEN = secrets.token_urlsafe(16)
-
 
 class YoloPrediction(BaseModel):
     cls: int | None = None
     label: str | None = None
-
-
-def authorize(request: Request, token: str | None) -> None:
-    """Allow requests from this machine unconditionally; anything else needs the token."""
-    is_local = request.client is not None and request.client.host in ("127.0.0.1", "::1")
-    if is_local:
-        return
-    if not token or not secrets.compare_digest(token, ACCESS_TOKEN):
-        raise HTTPException(status_code=403, detail="Forbidden")
 
 
 def get_lan_ip() -> str:
@@ -54,23 +53,14 @@ def get_lan_ip() -> str:
 
 
 @app.get("/")
-def home(request: Request, token: str | None = None):
+def home(request: Request):
     global connected
 
     # request.client is the real TCP peer address, unlike the Host header
     # (request.url.hostname), which the client controls and can't be trusted.
     is_local = request.client is not None and request.client.host in ("127.0.0.1", "::1")
 
-    if not is_local:
-        if not token or not secrets.compare_digest(token, ACCESS_TOKEN):
-            raise HTTPException(status_code=403, detail="Forbidden")
-        connected = True
-        return templates.TemplateResponse(request=request, name="welcome.html")
-
-    site_url = (
-        f"{request.url.scheme}://{get_lan_ip()}:{request.url.port}/"
-        f"?token={ACCESS_TOKEN}"
-    )
+    site_url = f"{request.url.scheme}://{get_lan_ip()}:{request.url.port}/"
 
     qr_image = qrcode.make(site_url)
     buffer = io.BytesIO()
@@ -88,15 +78,20 @@ def home(request: Request, token: str | None = None):
     )
 
 
-@app.get("/api/connect")
-def api_connect(request: Request, token: str | None = None):
-    """Hit by the mobile app right after it scans the QR code. Confirms the
-    token, marks the robot as connected, and hands back the info the app
-    shows on its "connected" screen."""
-    global connected
+@app.get("/alarm")
+def alarm(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="emergency.html",
+    )
 
-    if not token or not secrets.compare_digest(token, ACCESS_TOKEN):
-        raise HTTPException(status_code=403, detail="Forbidden")
+
+@app.get("/api/connect")
+def api_connect(request: Request):
+    """Hit by the mobile app right after it scans the QR code. Marks the
+    robot as connected and hands back the info the app shows on its
+    "connected" screen."""
+    global connected
 
     connected = True
 
@@ -108,13 +103,19 @@ def api_connect(request: Request, token: str | None = None):
         "client_ip": request.client.host if request.client else None,
     }
 
+@app.get("/api/get_connect_status")
+def api_get_connect_status():
+    """Polled by the kiosk page to refresh the connection indicator without a
+    full page reload. Read-only: unlike /api/connect, it must not flip
+    `connected` itself, or the status would go "connected" the instant the
+    kiosk starts polling."""
+    return {"connected": connected}
+
 
 @app.post("/api/yolo")
-def api_yolo(request: Request, prediction: YoloPrediction, token: str | None = None):
+def api_yolo(prediction: YoloPrediction):
     """Hit by yolo_model every 15 seconds with its latest detection result."""
     global latest
-
-    authorize(request, token)
 
     latest = {
         "cls": prediction.cls,
@@ -125,16 +126,13 @@ def api_yolo(request: Request, prediction: YoloPrediction, token: str | None = N
 
 
 @app.get("/api/latest")
-def api_latest(request: Request, token: str | None = None):
+def api_latest():
     """Returns the most recent yolo_model prediction, or null if none has arrived yet."""
-    authorize(request, token)
     return {"latest": latest}
+
 
 
 if __name__ == "__main__":
     import uvicorn
 
-    # Bind explicitly to 0.0.0.0: uvicorn's own default is 127.0.0.1
-    # (localhost-only), which would make the site unreachable from a phone
-    # no matter what the firewall allows.
     uvicorn.run(app, host="0.0.0.0", port=8000)

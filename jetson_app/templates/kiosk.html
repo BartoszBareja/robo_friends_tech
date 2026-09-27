@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>RoboFriend — Kiosk</title>
-    <link rel="stylesheet" href="../static/styles/style.css">
-    <script src="../static/scripts/script.js"></script>
+    <link rel="stylesheet" href="../static/styles/style.css?v={{ static_version('styles/style.css') }}">
+    <script src="../static/scripts/script.js?v={{ static_version('scripts/script.js') }}" defer></script>
 </head>
 <body>
     <main>
@@ -13,10 +13,11 @@
             <h2>Zeskanuj, aby połączyć telefon</h2>
             <img class="qr-code" src="data:image/png;base64,{{ qr_code_base64 }}" alt="Kod QR do połączenia">
             <p class="site-url">{{ site_url }}</p>
-            <p class="status {{ 'connected' if connected else 'not-connected' }}">
+            <p class="status {{ 'connected' if connected else 'not-connected' }}" id="connection-status">
                 {{ "Połączono" if connected else "Niepołączono" }}
             </p>
         </section>
+        <button class="test-alarm">Test alarm</button>
     </main>
 </body>
 </html>

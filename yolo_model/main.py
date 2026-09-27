@@ -4,15 +4,15 @@ import cv2
 import requests
 from ultralytics import YOLO
 
-JETSON_URL = "http://127.0.0.1:8000/api/yolo"
+JETSON_URL = "http://jetson_app:8000/api/yolo"
 PREDICTION_INTERVAL_SECONDS = 15
 
-model = YOLO("yolo-Weights/yolo26n.pt")
+model = YOLO("yolo-Weights/yolo26n_new.pt")
 
 
 def make_prediction(img) -> dict:
     """Runs one detection pass and returns the highest-confidence result, if any."""
-    result = model.predict(source=img, save=True, verbose=False)[0]
+    result = model.predict(source=img, verbose=False)[0]
 
     if len(result.boxes) == 0:
         return {"cls": None, "label": None}
@@ -31,12 +31,14 @@ def send_prediction(prediction: dict) -> None:
 
 if __name__ == '__main__':
     while True:
-        img = cv2.imread("test_images/test.jpg")
+        if cv2.VideoCapture(0):
+            ret, img = cv2.VideoCapture(0).read()
+        else:
+            img = cv2.imread("test_images/test6.jpg")
         if img is None:
             print("Nie udało się wczytać obrazu test_images/test.jpg")
         else:
             prediction = make_prediction(img)
             print(prediction)
             send_prediction(prediction)
-
         time.sleep(PREDICTION_INTERVAL_SECONDS)
